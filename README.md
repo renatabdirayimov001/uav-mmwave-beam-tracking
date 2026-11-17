@@ -1,5 +1,7 @@
 # Leakage-aware, closed-loop evaluation of camera-aided beam tracking for drone mmWave links
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24322380.svg)](https://doi.org/10.5281/zenodo.24322380)
+
 Code and results for the paper *"Beyond Random Splits and Oracle Beam History: Leakage-Aware, Closed-Loop Evaluation of Camera-Aided Beam Tracking for Drone Millimeter-Wave Links"* (under review).
 
 The experiments use the real 60 GHz drone measurements of **DeepSense 6G Scenario 23**. The dataset is **not** redistributed here; download it from the DeepSense 6G website (https://www.deepsense6g.net/scenario-23/) or use a Kaggle mirror of the development set.
