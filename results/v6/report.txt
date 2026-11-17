@@ -1,0 +1,377 @@
+ResNet-18 weights copied from /kaggle/input/datasets/renatabdirayimov/resnet18-weights/resnet18-f37072fd.pth
+ImageNet weights OK
+device: cuda | FAST: False
+CSV: /kaggle/input/datasets/haythemkrid/deepsense6g-scenario-23/scenario23_dev_w_resources/scenario23_dev/scenario23.csv (11387, 17)
+columns: ['index', 'unit1_rgb', 'unit1_pwr_60ghz', 'unit1_loc', 'unit2_loc', 'unit2_speed', 'unit2_altitude', 'unit2_distance', 'unit2_height', 'unit2_x-speed', 'unit2_y-speed', 'unit2_z-speed', 'unit2_pitch', 'unit2_roll', 'seq_index', 'time_stamp[UTC]', 'unit1_beam_index']
+power: unit1_pwr_60ghz rgb: unit1_rgb loc: unit2_loc seq: seq_index time: time_stamp[UTC] extra: {'height': 'unit2_height', 'distance': 'unit2_distance', 'speed': 'unit2_speed', 'pitch': 'unit2_pitch', 'roll': 'unit2_roll'}
+txt parsed in 239 s; N=11387, flights=35, length min/median/max 1/157/1464, images 11387
+P(beam changes between consecutive samples) = 0.179
+time stamp raw examples: ['"[\'16-58-42-0\']"', '"[\'16-58-42-142\']"', '"[\'16-58-42-284\']"']
+valid time differences: 11352
+time stamp example: "['16-58-42-0']"; sampling period median 142.0 ms (IQR 125.0-148.0 ms)
+images read in 290 s, (11387, 270, 480, 3), 4.4 GB
+cues causal: detection rate 0.970, Spearman(x-centroid, beam) = 0.714
+cues non-causal (v4): detection rate 0.970, Spearman(x-centroid, beam) = 0.714
+causal cue time 12.01 ms/frame (single process, incl. per-flight median)
+small images on cuda + embedding in 16 s
+degraded set low-light ready in 275 s
+degraded set blur ready in 117 s
+degraded set occlusion ready in 88 s
+h=0: 11129 samples, 30 flights
+fold 0: models trained in 143 s
+fold 0 clean: closed-loop k=2 Persistence (local sweep)=0.221, PAR (proposed)=0.977, PAR-noImg=0.957, GPS+hist=0.916, GRU (beam+telemetry seq.)=0.891, ResNet-18=0.983, ResNet-18 + aug=0.988, ResNet-18 + history (residual)=0.635, Fusion PAR x ResNet-18=0.992, Fusion PAR x ResNet-18 + aug=0.991
+fold 0 low-light: closed-loop k=2 Persistence (local sweep)=0.221, PAR (proposed)=0.969, PAR-noImg=0.957, GPS+hist=0.916, GRU (beam+telemetry seq.)=0.891, ResNet-18=0.002, ResNet-18 + aug=0.769, ResNet-18 + history (residual)=0.324, Fusion PAR x ResNet-18=0.969, Fusion PAR x ResNet-18 + aug=0.989
+fold 0 blur: closed-loop k=2 Persistence (local sweep)=0.221, PAR (proposed)=0.968, PAR-noImg=0.957, GPS+hist=0.916, GRU (beam+telemetry seq.)=0.891, ResNet-18=0.911, ResNet-18 + aug=0.949, ResNet-18 + history (residual)=0.930, Fusion PAR x ResNet-18=0.980, Fusion PAR x ResNet-18 + aug=0.987
+fold 0 occlusion: closed-loop k=2 Persistence (local sweep)=0.221, PAR (proposed)=0.958, PAR-noImg=0.957, GPS+hist=0.916, GRU (beam+telemetry seq.)=0.891, ResNet-18=0.109, ResNet-18 + aug=0.584, ResNet-18 + history (residual)=0.578, Fusion PAR x ResNet-18=0.957, Fusion PAR x ResNet-18 + aug=0.980
+fold 0 frame-drop 30%: closed-loop k=2 Persistence (local sweep)=0.221, PAR (proposed)=0.971, PAR-noImg=0.957, GPS+hist=0.916, GRU (beam+telemetry seq.)=0.891, ResNet-18=0.977, ResNet-18 + aug=0.983, ResNet-18 + history (residual)=0.547, Fusion PAR x ResNet-18=0.988, Fusion PAR x ResNet-18 + aug=0.987
+fold 0 done in 438 s (total 1645 s)
+fold 1: models trained in 142 s
+fold 1 clean: closed-loop k=2 Persistence (local sweep)=0.125, PAR (proposed)=0.952, PAR-noImg=0.645, GPS+hist=0.886, GRU (beam+telemetry seq.)=0.876, ResNet-18=0.968, ResNet-18 + aug=0.972, ResNet-18 + history (residual)=0.635, Fusion PAR x ResNet-18=0.969, Fusion PAR x ResNet-18 + aug=0.973
+fold 1 low-light: closed-loop k=2 Persistence (local sweep)=0.125, PAR (proposed)=0.942, PAR-noImg=0.645, GPS+hist=0.886, GRU (beam+telemetry seq.)=0.876, ResNet-18=0.072, ResNet-18 + aug=0.783, ResNet-18 + history (residual)=0.606, Fusion PAR x ResNet-18=0.939, Fusion PAR x ResNet-18 + aug=0.962
+fold 1 blur: closed-loop k=2 Persistence (local sweep)=0.125, PAR (proposed)=0.625, PAR-noImg=0.645, GPS+hist=0.886, GRU (beam+telemetry seq.)=0.876, ResNet-18=0.630, ResNet-18 + aug=0.942, ResNet-18 + history (residual)=0.609, Fusion PAR x ResNet-18=0.961, Fusion PAR x ResNet-18 + aug=0.971
+fold 1 occlusion: closed-loop k=2 Persistence (local sweep)=0.125, PAR (proposed)=0.938, PAR-noImg=0.645, GPS+hist=0.886, GRU (beam+telemetry seq.)=0.876, ResNet-18=0.114, ResNet-18 + aug=0.751, ResNet-18 + history (residual)=0.915, Fusion PAR x ResNet-18=0.931, Fusion PAR x ResNet-18 + aug=0.951
+fold 1 frame-drop 30%: closed-loop k=2 Persistence (local sweep)=0.125, PAR (proposed)=0.953, PAR-noImg=0.645, GPS+hist=0.886, GRU (beam+telemetry seq.)=0.876, ResNet-18=0.951, ResNet-18 + aug=0.954, ResNet-18 + history (residual)=0.619, Fusion PAR x ResNet-18=0.965, Fusion PAR x ResNet-18 + aug=0.967
+fold 1 done in 360 s (total 2005 s)
+fold 2: models trained in 141 s
+fold 2 clean: closed-loop k=2 Persistence (local sweep)=0.048, PAR (proposed)=0.909, PAR-noImg=0.908, GPS+hist=0.906, GRU (beam+telemetry seq.)=0.860, ResNet-18=0.965, ResNet-18 + aug=0.960, ResNet-18 + history (residual)=0.872, Fusion PAR x ResNet-18=0.977, Fusion PAR x ResNet-18 + aug=0.975
+fold 2 low-light: closed-loop k=2 Persistence (local sweep)=0.048, PAR (proposed)=0.891, PAR-noImg=0.908, GPS+hist=0.906, GRU (beam+telemetry seq.)=0.860, ResNet-18=0.125, ResNet-18 + aug=0.679, ResNet-18 + history (residual)=0.842, Fusion PAR x ResNet-18=0.427, Fusion PAR x ResNet-18 + aug=0.940
+fold 2 blur: closed-loop k=2 Persistence (local sweep)=0.048, PAR (proposed)=0.900, PAR-noImg=0.908, GPS+hist=0.906, GRU (beam+telemetry seq.)=0.860, ResNet-18=0.626, ResNet-18 + aug=0.793, ResNet-18 + history (residual)=0.845, Fusion PAR x ResNet-18=0.914, Fusion PAR x ResNet-18 + aug=0.928
+fold 2 occlusion: closed-loop k=2 Persistence (local sweep)=0.048, PAR (proposed)=0.886, PAR-noImg=0.908, GPS+hist=0.906, GRU (beam+telemetry seq.)=0.860, ResNet-18=0.260, ResNet-18 + aug=0.615, ResNet-18 + history (residual)=0.504, Fusion PAR x ResNet-18=0.860, Fusion PAR x ResNet-18 + aug=0.947
+fold 2 frame-drop 30%: closed-loop k=2 Persistence (local sweep)=0.048, PAR (proposed)=0.909, PAR-noImg=0.908, GPS+hist=0.906, GRU (beam+telemetry seq.)=0.860, ResNet-18=0.940, ResNet-18 + aug=0.934, ResNet-18 + history (residual)=0.872, Fusion PAR x ResNet-18=0.954, Fusion PAR x ResNet-18 + aug=0.960
+fold 2 done in 343 s (total 2348 s)
+fold 3: models trained in 142 s
+fold 3 clean: closed-loop k=2 Persistence (local sweep)=0.110, PAR (proposed)=0.825, PAR-noImg=0.685, GPS+hist=0.868, GRU (beam+telemetry seq.)=0.764, ResNet-18=0.965, ResNet-18 + aug=0.964, ResNet-18 + history (residual)=0.735, Fusion PAR x ResNet-18=0.958, Fusion PAR x ResNet-18 + aug=0.958
+fold 3 low-light: closed-loop k=2 Persistence (local sweep)=0.110, PAR (proposed)=0.634, PAR-noImg=0.685, GPS+hist=0.868, GRU (beam+telemetry seq.)=0.764, ResNet-18=0.081, ResNet-18 + aug=0.908, ResNet-18 + history (residual)=0.517, Fusion PAR x ResNet-18=0.646, Fusion PAR x ResNet-18 + aug=0.961
+fold 3 blur: closed-loop k=2 Persistence (local sweep)=0.110, PAR (proposed)=0.642, PAR-noImg=0.685, GPS+hist=0.868, GRU (beam+telemetry seq.)=0.764, ResNet-18=0.895, ResNet-18 + aug=0.953, ResNet-18 + history (residual)=0.715, Fusion PAR x ResNet-18=0.943, Fusion PAR x ResNet-18 + aug=0.958
+fold 3 occlusion: closed-loop k=2 Persistence (local sweep)=0.110, PAR (proposed)=0.622, PAR-noImg=0.685, GPS+hist=0.868, GRU (beam+telemetry seq.)=0.764, ResNet-18=0.203, ResNet-18 + aug=0.599, ResNet-18 + history (residual)=0.631, Fusion PAR x ResNet-18=0.845, Fusion PAR x ResNet-18 + aug=0.938
+fold 3 frame-drop 30%: closed-loop k=2 Persistence (local sweep)=0.110, PAR (proposed)=0.823, PAR-noImg=0.685, GPS+hist=0.868, GRU (beam+telemetry seq.)=0.764, ResNet-18=0.937, ResNet-18 + aug=0.939, ResNet-18 + history (residual)=0.733, Fusion PAR x ResNet-18=0.944, Fusion PAR x ResNet-18 + aug=0.943
+fold 3 done in 327 s (total 2675 s)
+fold 4: models trained in 142 s
+fold 4 clean: closed-loop k=2 Persistence (local sweep)=0.176, PAR (proposed)=0.931, PAR-noImg=0.936, GPS+hist=0.875, GRU (beam+telemetry seq.)=0.803, ResNet-18=0.963, ResNet-18 + aug=0.971, ResNet-18 + history (residual)=0.907, Fusion PAR x ResNet-18=0.977, Fusion PAR x ResNet-18 + aug=0.982
+fold 4 low-light: closed-loop k=2 Persistence (local sweep)=0.176, PAR (proposed)=0.886, PAR-noImg=0.936, GPS+hist=0.875, GRU (beam+telemetry seq.)=0.803, ResNet-18=0.131, ResNet-18 + aug=0.936, ResNet-18 + history (residual)=0.112, Fusion PAR x ResNet-18=0.706, Fusion PAR x ResNet-18 + aug=0.973
+fold 4 blur: closed-loop k=2 Persistence (local sweep)=0.176, PAR (proposed)=0.893, PAR-noImg=0.936, GPS+hist=0.875, GRU (beam+telemetry seq.)=0.803, ResNet-18=0.936, ResNet-18 + aug=0.970, ResNet-18 + history (residual)=0.884, Fusion PAR x ResNet-18=0.973, Fusion PAR x ResNet-18 + aug=0.982
+fold 4 occlusion: closed-loop k=2 Persistence (local sweep)=0.176, PAR (proposed)=0.902, PAR-noImg=0.936, GPS+hist=0.875, GRU (beam+telemetry seq.)=0.803, ResNet-18=0.191, ResNet-18 + aug=0.646, ResNet-18 + history (residual)=0.080, Fusion PAR x ResNet-18=0.836, Fusion PAR x ResNet-18 + aug=0.951
+fold 4 frame-drop 30%: closed-loop k=2 Persistence (local sweep)=0.176, PAR (proposed)=0.932, PAR-noImg=0.936, GPS+hist=0.875, GRU (beam+telemetry seq.)=0.803, ResNet-18=0.940, ResNet-18 + aug=0.941, ResNet-18 + history (residual)=0.909, Fusion PAR x ResNet-18=0.960, Fusion PAR x ResNet-18 + aug=0.964
+fold 4 done in 311 s (total 2986 s)
+
+Open loop h=0 top-1 (oracle history), mean over folds:
+degradation                      blur  clean  frame-drop 30%  low-light  occlusion
+model                                                                             
+Fusion PAR x ResNet-18          0.852  0.869           0.857      0.811      0.823
+Fusion PAR x ResNet-18 + aug    0.858  0.866           0.857      0.849      0.838
+GPS+hist                        0.769  0.769           0.769      0.769      0.769
+GRU (beam+telemetry seq.)       0.813  0.813           0.813      0.813      0.813
+PAR (proposed)                  0.841  0.852           0.843      0.831      0.825
+PAR-noImg                       0.835  0.835           0.835      0.835      0.835
+Persistence (local sweep)       0.823  0.823           0.823      0.823      0.823
+ResNet-18                       0.674  0.835           0.804      0.042      0.111
+ResNet-18 + aug                 0.771  0.838           0.805      0.639      0.478
+ResNet-18 + history (residual)  0.831  0.836           0.826      0.768      0.708
+
+Closed loop k=1 accuracy:
+degradation                      blur  clean  frame-drop 30%  low-light  occlusion
+model                                                                             
+Fusion PAR x ResNet-18          0.534  0.737           0.691      0.247      0.207
+Fusion PAR x ResNet-18 + aug    0.618  0.665           0.623      0.517      0.468
+GPS+hist                        0.425  0.425           0.425      0.425      0.425
+GRU (beam+telemetry seq.)       0.386  0.386           0.386      0.386      0.386
+PAR (proposed)                  0.239  0.306           0.326      0.270      0.225
+PAR-noImg                       0.320  0.320           0.320      0.320      0.320
+Persistence (local sweep)       0.134  0.134           0.134      0.134      0.134
+ResNet-18                       0.674  0.835           0.804      0.042      0.111
+ResNet-18 + aug                 0.771  0.838           0.805      0.639      0.478
+ResNet-18 + history (residual)  0.130  0.171           0.177      0.136      0.089
+Closed loop k=1 mean power loss (dB):
+degradation                      blur  clean  frame-drop 30%  low-light  occlusion
+model                                                                             
+Fusion PAR x ResNet-18          0.822  0.232           0.333      3.013      3.247
+Fusion PAR x ResNet-18 + aug    0.446  0.282           0.405      0.578      1.116
+GPS+hist                        1.416  1.416           1.416      1.416      1.416
+GRU (beam+telemetry seq.)       1.720  1.720           1.720      1.720      1.720
+PAR (proposed)                  2.153  1.637           1.869      2.156      2.690
+PAR-noImg                       1.797  1.797           1.797      1.797      1.797
+Persistence (local sweep)       4.359  4.359           4.359      4.359      4.359
+ResNet-18                       0.523  0.063           0.108      4.865      4.318
+ResNet-18 + aug                 0.191  0.037           0.087      0.483      1.548
+ResNet-18 + history (residual)  3.933  3.536           3.138      4.410      5.454
+Closed loop k=1 3-dB outage:
+degradation                      blur  clean  frame-drop 30%  low-light  occlusion
+model                                                                             
+Fusion PAR x ResNet-18          0.098  0.026           0.038      0.402      0.440
+Fusion PAR x ResNet-18 + aug    0.054  0.027           0.042      0.063      0.134
+GPS+hist                        0.174  0.174           0.174      0.174      0.174
+GRU (beam+telemetry seq.)       0.212  0.212           0.212      0.212      0.212
+PAR (proposed)                  0.277  0.201           0.226      0.278      0.327
+PAR-noImg                       0.207  0.207           0.207      0.207      0.207
+Persistence (local sweep)       0.565  0.565           0.565      0.565      0.565
+ResNet-18                       0.068  0.004           0.008      0.678      0.597
+ResNet-18 + aug                 0.023  0.001           0.006      0.057      0.198
+ResNet-18 + history (residual)  0.526  0.487           0.412      0.516      0.640
+
+Closed loop k=2 accuracy:
+degradation                      blur  clean  frame-drop 30%  low-light  occlusion
+model                                                                             
+Fusion PAR x ResNet-18          0.954  0.975           0.962      0.738      0.886
+Fusion PAR x ResNet-18 + aug    0.965  0.976           0.964      0.965      0.953
+GPS+hist                        0.890  0.890           0.890      0.890      0.890
+GRU (beam+telemetry seq.)       0.839  0.839           0.839      0.839      0.839
+PAR (proposed)                  0.806  0.919           0.918      0.864      0.861
+PAR-noImg                       0.826  0.826           0.826      0.826      0.826
+Persistence (local sweep)       0.136  0.136           0.136      0.136      0.136
+ResNet-18                       0.800  0.969           0.949      0.082      0.175
+ResNet-18 + aug                 0.921  0.971           0.950      0.815      0.639
+ResNet-18 + history (residual)  0.797  0.757           0.736      0.480      0.542
+Closed loop k=2 mean power loss (dB):
+degradation                      blur  clean  frame-drop 30%  low-light  occlusion
+model                                                                             
+Fusion PAR x ResNet-18          0.043  0.018           0.043      0.765      0.181
+Fusion PAR x ResNet-18 + aug    0.020  0.022           0.038      0.013      0.034
+GPS+hist                        0.142  0.142           0.142      0.142      0.142
+GRU (beam+telemetry seq.)       0.300  0.300           0.300      0.300      0.300
+PAR (proposed)                  0.606  0.176           0.185      0.387      0.402
+PAR-noImg                       0.543  0.543           0.543      0.543      0.543
+Persistence (local sweep)       4.587  4.587           4.587      4.587      4.587
+ResNet-18                       0.378  0.014           0.034      4.136      3.403
+ResNet-18 + aug                 0.111  0.004           0.027      0.273      0.918
+ResNet-18 + history (residual)  0.499  0.535           0.737      1.807      1.711
+Closed loop k=2 3-dB outage:
+degradation                      blur  clean  frame-drop 30%  low-light  occlusion
+model                                                                             
+Fusion PAR x ResNet-18          0.004  0.002           0.004      0.122      0.021
+Fusion PAR x ResNet-18 + aug    0.002  0.002           0.003      0.001      0.003
+GPS+hist                        0.019  0.019           0.019      0.019      0.019
+GRU (beam+telemetry seq.)       0.038  0.038           0.038      0.038      0.038
+PAR (proposed)                  0.107  0.029           0.029      0.062      0.063
+PAR-noImg                       0.098  0.098           0.098      0.098      0.098
+Persistence (local sweep)       0.604  0.604           0.604      0.604      0.604
+ResNet-18                       0.047  0.002           0.003      0.630      0.520
+ResNet-18 + aug                 0.015  0.000           0.002      0.031      0.126
+ResNet-18 + history (residual)  0.089  0.089           0.128      0.264      0.247
+
+Closed loop k=3 accuracy:
+degradation                      blur  clean  frame-drop 30%  low-light  occlusion
+model                                                                             
+Fusion PAR x ResNet-18          0.989  0.992           0.988      0.931      0.960
+Fusion PAR x ResNet-18 + aug    0.990  0.992           0.988      0.989      0.986
+GPS+hist                        0.958  0.958           0.958      0.958      0.958
+GRU (beam+telemetry seq.)       0.965  0.965           0.965      0.965      0.965
+PAR (proposed)                  0.960  0.962           0.961      0.956      0.940
+PAR-noImg                       0.949  0.949           0.949      0.949      0.949
+Persistence (local sweep)       0.802  0.802           0.802      0.802      0.802
+ResNet-18                       0.857  0.989           0.978      0.149      0.247
+ResNet-18 + aug                 0.952  0.991           0.982      0.877      0.721
+ResNet-18 + history (residual)  0.954  0.947           0.943      0.841      0.828
+Closed loop k=3 mean power loss (dB):
+degradation                      blur  clean  frame-drop 30%  low-light  occlusion
+model                                                                             
+Fusion PAR x ResNet-18          0.013  0.011           0.015      0.135      0.060
+Fusion PAR x ResNet-18 + aug    0.005  0.005           0.010      0.007      0.013
+GPS+hist                        0.056  0.056           0.056      0.056      0.056
+GRU (beam+telemetry seq.)       0.044  0.044           0.044      0.044      0.044
+PAR (proposed)                  0.100  0.099           0.101      0.124      0.155
+PAR-noImg                       0.116  0.116           0.116      0.116      0.116
+Persistence (local sweep)       0.678  0.678           0.678      0.678      0.678
+ResNet-18                       0.242  0.007           0.019      3.218      2.825
+ResNet-18 + aug                 0.081  0.001           0.012      0.190      0.674
+ResNet-18 + history (residual)  0.096  0.148           0.163      0.498      0.489
+Closed loop k=3 3-dB outage:
+degradation                      blur  clean  frame-drop 30%  low-light  occlusion
+model                                                                             
+Fusion PAR x ResNet-18          0.001  0.002           0.002      0.020      0.009
+Fusion PAR x ResNet-18 + aug    0.001  0.001           0.001      0.001      0.002
+GPS+hist                        0.008  0.008           0.008      0.008      0.008
+GRU (beam+telemetry seq.)       0.006  0.006           0.006      0.006      0.006
+PAR (proposed)                  0.015  0.018           0.018      0.021      0.023
+PAR-noImg                       0.019  0.019           0.019      0.019      0.019
+Persistence (local sweep)       0.123  0.123           0.123      0.123      0.123
+ResNet-18                       0.029  0.001           0.002      0.519      0.445
+ResNet-18 + aug                 0.011  0.000           0.001      0.021      0.094
+ResNet-18 + history (residual)  0.015  0.024           0.027      0.074      0.065
+
+overhead by k: k
+1    0.052
+2    0.082
+3    0.113
+
+Closed-loop paired tests, k=2 and k=3:
+                              ref     degradation  k                              vs  mean_diff_pp  wins  losses       p  p_holm
+9    Fusion PAR x ResNet-18 + aug            blur  2       Persistence (local sweep)       70.8966    29       0  0.0000  0.0003
+10   Fusion PAR x ResNet-18 + aug            blur  2                  PAR (proposed)       17.3470    26       1  0.0000  0.0031
+11   Fusion PAR x ResNet-18 + aug            blur  2                       PAR-noImg       16.0255    25       2  0.0001  0.0042
+12   Fusion PAR x ResNet-18 + aug            blur  2                        GPS+hist       10.0164    24       4  0.0000  0.0033
+13   Fusion PAR x ResNet-18 + aug            blur  2       GRU (beam+telemetry seq.)       20.0750    27       0  0.0000  0.0006
+14   Fusion PAR x ResNet-18 + aug            blur  2                       ResNet-18       15.0658    24       3  0.0001  0.0069
+15   Fusion PAR x ResNet-18 + aug            blur  2                 ResNet-18 + aug        5.3309    18      11  0.0467  0.7465
+16   Fusion PAR x ResNet-18 + aug            blur  2  ResNet-18 + history (residual)       21.8963    26       2  0.0000  0.0013
+17   Fusion PAR x ResNet-18 + aug            blur  2          Fusion PAR x ResNet-18        0.3833    18       6  0.1161  1.0000
+18   Fusion PAR x ResNet-18 + aug            blur  3       Persistence (local sweep)       18.1440    21       1  0.0001  0.0068
+19   Fusion PAR x ResNet-18 + aug            blur  3                  PAR (proposed)        4.4624    18       2  0.0025  0.0724
+20   Fusion PAR x ResNet-18 + aug            blur  3                       PAR-noImg        5.8991    18       1  0.0006  0.0250
+21   Fusion PAR x ResNet-18 + aug            blur  3                        GPS+hist        5.1973    23       3  0.0001  0.0056
+22   Fusion PAR x ResNet-18 + aug            blur  3       GRU (beam+telemetry seq.)        7.1493    22       2  0.0001  0.0061
+23   Fusion PAR x ResNet-18 + aug            blur  3                       ResNet-18       12.8563    21       4  0.0003  0.0131
+24   Fusion PAR x ResNet-18 + aug            blur  3                 ResNet-18 + aug        2.7026    15       7  0.1080  1.0000
+25   Fusion PAR x ResNet-18 + aug            blur  3  ResNet-18 + history (residual)        7.4458    21       1  0.0002  0.0104
+26   Fusion PAR x ResNet-18 + aug            blur  3          Fusion PAR x ResNet-18        0.2825     8       7  0.4603  1.0000
+36   Fusion PAR x ResNet-18 + aug           clean  2       Persistence (local sweep)       71.2004    29       0  0.0000  0.0003
+37   Fusion PAR x ResNet-18 + aug           clean  2                  PAR (proposed)        9.8683    26       0  0.0000  0.0008
+38   Fusion PAR x ResNet-18 + aug           clean  2                       PAR-noImg       16.3293    26       0  0.0000  0.0008
+39   Fusion PAR x ResNet-18 + aug           clean  2                        GPS+hist       10.3202    26       2  0.0000  0.0007
+40   Fusion PAR x ResNet-18 + aug           clean  2       GRU (beam+telemetry seq.)       20.3788    28       0  0.0000  0.0005
+41   Fusion PAR x ResNet-18 + aug           clean  2                       ResNet-18        0.6360    18       6  0.0675  1.0000
+42   Fusion PAR x ResNet-18 + aug           clean  2                 ResNet-18 + aug        2.2431    16      11  0.3488  1.0000
+43   Fusion PAR x ResNet-18 + aug           clean  2  ResNet-18 + history (residual)       23.8329    28       1  0.0000  0.0003
+44   Fusion PAR x ResNet-18 + aug           clean  2          Fusion PAR x ResNet-18       -0.2380    13       9  0.2234  1.0000
+45   Fusion PAR x ResNet-18 + aug           clean  3       Persistence (local sweep)       18.2991    22       0  0.0000  0.0033
+46   Fusion PAR x ResNet-18 + aug           clean  3                  PAR (proposed)        5.6703    21       0  0.0001  0.0045
+47   Fusion PAR x ResNet-18 + aug           clean  3                       PAR-noImg        6.0541    20       0  0.0001  0.0061
+48   Fusion PAR x ResNet-18 + aug           clean  3                        GPS+hist        5.3524    24       2  0.0000  0.0029
+49   Fusion PAR x ResNet-18 + aug           clean  3       GRU (beam+telemetry seq.)        7.3044    23       1  0.0000  0.0036
+50   Fusion PAR x ResNet-18 + aug           clean  3                       ResNet-18        0.3972    14       8  0.2234  1.0000
+51   Fusion PAR x ResNet-18 + aug           clean  3                 ResNet-18 + aug        0.0449    11       9  0.8813  1.0000
+52   Fusion PAR x ResNet-18 + aug           clean  3  ResNet-18 + history (residual)        6.5396    19       2  0.0009  0.0334
+53   Fusion PAR x ResNet-18 + aug           clean  3          Fusion PAR x ResNet-18        0.3403     4       6  0.8785  1.0000
+63   Fusion PAR x ResNet-18 + aug  frame-drop 30%  2       Persistence (local sweep)       68.4558    29       0  0.0000  0.0003
+64   Fusion PAR x ResNet-18 + aug  frame-drop 30%  2                  PAR (proposed)        6.9456    21       3  0.0005  0.0201
+65   Fusion PAR x ResNet-18 + aug  frame-drop 30%  2                       PAR-noImg       13.5847    22       4  0.0002  0.0124
+66   Fusion PAR x ResNet-18 + aug  frame-drop 30%  2                        GPS+hist        7.5756    25       3  0.0001  0.0042
+67   Fusion PAR x ResNet-18 + aug  frame-drop 30%  2       GRU (beam+telemetry seq.)       17.6342    28       0  0.0000  0.0005
+68   Fusion PAR x ResNet-18 + aug  frame-drop 30%  2                       ResNet-18        1.3105    22       5  0.0133  0.2668
+69   Fusion PAR x ResNet-18 + aug  frame-drop 30%  2                 ResNet-18 + aug        2.7220    17       8  0.0396  0.7120
+70   Fusion PAR x ResNet-18 + aug  frame-drop 30%  2  ResNet-18 + history (residual)       21.8286    25       4  0.0000  0.0008
+71   Fusion PAR x ResNet-18 + aug  frame-drop 30%  2          Fusion PAR x ResNet-18        0.3249    13       5  0.1841  1.0000
+72   Fusion PAR x ResNet-18 + aug  frame-drop 30%  3       Persistence (local sweep)       17.3569    22       0  0.0000  0.0033
+73   Fusion PAR x ResNet-18 + aug  frame-drop 30%  3                  PAR (proposed)        4.9235    16       2  0.0012  0.0412
+74   Fusion PAR x ResNet-18 + aug  frame-drop 30%  3                       PAR-noImg        5.1119    17       3  0.0045  0.1228
+75   Fusion PAR x ResNet-18 + aug  frame-drop 30%  3                        GPS+hist        4.4102    24       2  0.0001  0.0069
+76   Fusion PAR x ResNet-18 + aug  frame-drop 30%  3       GRU (beam+telemetry seq.)        6.3622    23       3  0.0002  0.0119
+77   Fusion PAR x ResNet-18 + aug  frame-drop 30%  3                       ResNet-18        2.1384    19       3  0.0001  0.0074
+78   Fusion PAR x ResNet-18 + aug  frame-drop 30%  3                 ResNet-18 + aug        1.3351    18       3  0.0046  0.1228
+79   Fusion PAR x ResNet-18 + aug  frame-drop 30%  3  ResNet-18 + history (residual)        8.7722    18       2  0.0022  0.0683
+80   Fusion PAR x ResNet-18 + aug  frame-drop 30%  3          Fusion PAR x ResNet-18        0.1973     6      10  0.5695  1.0000
+90   Fusion PAR x ResNet-18 + aug       low-light  2       Persistence (local sweep)       70.7304    29       0  0.0000  0.0003
+91   Fusion PAR x ResNet-18 + aug       low-light  2                  PAR (proposed)       14.8898    24       3  0.0002  0.0111
+92   Fusion PAR x ResNet-18 + aug       low-light  2                       PAR-noImg       15.8593    22       3  0.0003  0.0139
+93   Fusion PAR x ResNet-18 + aug       low-light  2                        GPS+hist        9.8502    24       5  0.0000  0.0037
+94   Fusion PAR x ResNet-18 + aug       low-light  2       GRU (beam+telemetry seq.)       19.9088    26       2  0.0000  0.0006
+95   Fusion PAR x ResNet-18 + aug       low-light  2                       ResNet-18       86.6214    30       0  0.0000  0.0002
+96   Fusion PAR x ResNet-18 + aug       low-light  2                 ResNet-18 + aug       11.8324    19      10  0.0071  0.1633
+97   Fusion PAR x ResNet-18 + aug       low-light  2  ResNet-18 + history (residual)       43.6136    26       1  0.0000  0.0007
+98   Fusion PAR x ResNet-18 + aug       low-light  2          Fusion PAR x ResNet-18       21.7495    26       2  0.0000  0.0020
+99   Fusion PAR x ResNet-18 + aug       low-light  3       Persistence (local sweep)       17.7993    21       2  0.0003  0.0139
+100  Fusion PAR x ResNet-18 + aug       low-light  3                  PAR (proposed)        5.1945    19       2  0.0021  0.0671
+101  Fusion PAR x ResNet-18 + aug       low-light  3                       PAR-noImg        5.5543    19       2  0.0024  0.0707
+102  Fusion PAR x ResNet-18 + aug       low-light  3                        GPS+hist        4.8525    22       5  0.0007  0.0275
+103  Fusion PAR x ResNet-18 + aug       low-light  3       GRU (beam+telemetry seq.)        6.8045    20       2  0.0002  0.0111
+104  Fusion PAR x ResNet-18 + aug       low-light  3                       ResNet-18       82.8928    30       0  0.0000  0.0002
+105  Fusion PAR x ResNet-18 + aug       low-light  3                 ResNet-18 + aug        9.4001    17       6  0.0068  0.1630
+106  Fusion PAR x ResNet-18 + aug       low-light  3  ResNet-18 + history (residual)       20.0078    21       2  0.0003  0.0149
+107  Fusion PAR x ResNet-18 + aug       low-light  3          Fusion PAR x ResNet-18        7.1542    22       1  0.0002  0.0121
+117  Fusion PAR x ResNet-18 + aug       occlusion  2       Persistence (local sweep)       68.8080    29       0  0.0000  0.0003
+118  Fusion PAR x ResNet-18 + aug       occlusion  2                  PAR (proposed)       14.7182    22       4  0.0002  0.0119
+119  Fusion PAR x ResNet-18 + aug       occlusion  2                       PAR-noImg       13.9369    18       8  0.0016  0.0522
+120  Fusion PAR x ResNet-18 + aug       occlusion  2                        GPS+hist        7.9278    26       2  0.0000  0.0014
+121  Fusion PAR x ResNet-18 + aug       occlusion  2       GRU (beam+telemetry seq.)       17.9864    29       1  0.0000  0.0000
+122  Fusion PAR x ResNet-18 + aug       occlusion  2                       ResNet-18       73.9259    30       0  0.0000  0.0000
+123  Fusion PAR x ResNet-18 + aug       occlusion  2                 ResNet-18 + aug       31.1793    30       0  0.0000  0.0000
+124  Fusion PAR x ResNet-18 + aug       occlusion  2  ResNet-18 + history (residual)       35.7515    28       1  0.0000  0.0006
+125  Fusion PAR x ResNet-18 + aug       occlusion  2          Fusion PAR x ResNet-18        6.8688    23       1  0.0001  0.0047
+126  Fusion PAR x ResNet-18 + aug       occlusion  3       Persistence (local sweep)       17.6825    20       1  0.0001  0.0050
+127  Fusion PAR x ResNet-18 + aug       occlusion  3                  PAR (proposed)        6.6936    16       1  0.0004  0.0152
+128  Fusion PAR x ResNet-18 + aug       occlusion  3                       PAR-noImg        5.4375    13       4  0.0056  0.1405
+129  Fusion PAR x ResNet-18 + aug       occlusion  3                        GPS+hist        4.7358    22       5  0.0001  0.0080
+130  Fusion PAR x ResNet-18 + aug       occlusion  3       GRU (beam+telemetry seq.)        6.6878    22       3  0.0001  0.0047
+131  Fusion PAR x ResNet-18 + aug       occlusion  3                       ResNet-18       71.0141    30       0  0.0000  0.0000
+132  Fusion PAR x ResNet-18 + aug       occlusion  3                 ResNet-18 + aug       26.8183    30       0  0.0000  0.0002
+133  Fusion PAR x ResNet-18 + aug       occlusion  3  ResNet-18 + history (residual)       18.2247    18       3  0.0003  0.0135
+134  Fusion PAR x ResNet-18 + aug       occlusion  3          Fusion PAR x ResNet-18        4.4731    20       0  0.0001  0.0061
+144                PAR (proposed)            blur  2       Persistence (local sweep)       53.5496    27       1  0.0000  0.0007
+145                PAR (proposed)            blur  2                       PAR-noImg       -1.3215    10      12  0.4852  1.0000
+146                PAR (proposed)            blur  2                        GPS+hist       -7.3306    15      12  0.8664  1.0000
+147                PAR (proposed)            blur  2       GRU (beam+telemetry seq.)        2.7280    19       8  0.1785  1.0000
+148                PAR (proposed)            blur  2                       ResNet-18       -2.2812    17      12  0.9741  1.0000
+149                PAR (proposed)            blur  2                 ResNet-18 + aug      -12.0161     9      19  0.0757  1.0000
+150                PAR (proposed)            blur  2  ResNet-18 + history (residual)        4.5493    19       6  0.0511  1.0000
+151                PAR (proposed)            blur  2          Fusion PAR x ResNet-18      -16.9637     2      22  0.0001  0.0126
+152                PAR (proposed)            blur  2    Fusion PAR x ResNet-18 + aug      -17.3470     1      26  0.0000  0.0040
+153                PAR (proposed)            blur  3       Persistence (local sweep)       13.6817    19       1  0.0001  0.0103
+154                PAR (proposed)            blur  3                       PAR-noImg        1.4367     6       6  0.5303  1.0000
+155                PAR (proposed)            blur  3                        GPS+hist        0.7349    18       8  0.2376  1.0000
+156                PAR (proposed)            blur  3       GRU (beam+telemetry seq.)        2.6869    16      10  0.1587  1.0000
+157                PAR (proposed)            blur  3                       ResNet-18        8.3939    14      12  0.3673  1.0000
+158                PAR (proposed)            blur  3                 ResNet-18 + aug       -1.7597    10      15  0.6186  1.0000
+159                PAR (proposed)            blur  3  ResNet-18 + history (residual)        2.9834    12       6  0.2485  1.0000
+160                PAR (proposed)            blur  3          Fusion PAR x ResNet-18       -4.1799     2      20  0.0014  0.1025
+161                PAR (proposed)            blur  3    Fusion PAR x ResNet-18 + aug       -4.4624     2      18  0.0025  0.1672
+171                PAR (proposed)           clean  2       Persistence (local sweep)       61.3321    27       1  0.0000  0.0006
+172                PAR (proposed)           clean  2                       PAR-noImg        6.4610    17       5  0.0240  1.0000
+173                PAR (proposed)           clean  2                        GPS+hist        0.4519    19       6  0.0827  1.0000
+174                PAR (proposed)           clean  2       GRU (beam+telemetry seq.)       10.5105    23       5  0.0010  0.0802
+175                PAR (proposed)           clean  2                       ResNet-18       -9.2323     7      21  0.0088  0.5472
+176                PAR (proposed)           clean  2                 ResNet-18 + aug       -7.6252     9      20  0.0051  0.3319
+177                PAR (proposed)           clean  2  ResNet-18 + history (residual)       13.9646    22       3  0.0002  0.0182
+178                PAR (proposed)           clean  2          Fusion PAR x ResNet-18      -10.1063     2      23  0.0001  0.0068
+179                PAR (proposed)           clean  2    Fusion PAR x ResNet-18 + aug       -9.8683     0      26  0.0000  0.0010
+180                PAR (proposed)           clean  3       Persistence (local sweep)       12.6288    19       1  0.0006  0.0475
+181                PAR (proposed)           clean  3                       PAR-noImg        0.3838     7       5  0.8139  1.0000
+182                PAR (proposed)           clean  3                        GPS+hist       -0.3179    16       8  0.5111  1.0000
+183                PAR (proposed)           clean  3       GRU (beam+telemetry seq.)        1.6341    15      11  0.4849  1.0000
+184                PAR (proposed)           clean  3                       ResNet-18       -5.2732     5      18  0.0042  0.2805
+185                PAR (proposed)           clean  3                 ResNet-18 + aug       -5.6254     6      18  0.0025  0.1671
+186                PAR (proposed)           clean  3  ResNet-18 + history (residual)        0.8693    13       9  0.4852  1.0000
+187                PAR (proposed)           clean  3          Fusion PAR x ResNet-18       -5.3300     0      23  0.0000  0.0031
+188                PAR (proposed)           clean  3    Fusion PAR x ResNet-18 + aug       -5.6703     0      21  0.0001  0.0063
+198                PAR (proposed)  frame-drop 30%  2       Persistence (local sweep)       61.5101    27       1  0.0000  0.0006
+199                PAR (proposed)  frame-drop 30%  2                       PAR-noImg        6.6390    13       7  0.0620  1.0000
+200                PAR (proposed)  frame-drop 30%  2                        GPS+hist        0.6299    18       7  0.0578  1.0000
+201                PAR (proposed)  frame-drop 30%  2       GRU (beam+telemetry seq.)       10.6885    23       4  0.0011  0.0825
+202                PAR (proposed)  frame-drop 30%  2                       ResNet-18       -5.6352    14      12  0.3740  1.0000
+203                PAR (proposed)  frame-drop 30%  2                 ResNet-18 + aug       -4.2237    14      13  0.3488  1.0000
+204                PAR (proposed)  frame-drop 30%  2  ResNet-18 + history (residual)       14.8830    22       3  0.0002  0.0169
+205                PAR (proposed)  frame-drop 30%  2          Fusion PAR x ResNet-18       -6.6208     6      21  0.0006  0.0510
+206                PAR (proposed)  frame-drop 30%  2    Fusion PAR x ResNet-18 + aug       -6.9456     3      21  0.0005  0.0398
+207                PAR (proposed)  frame-drop 30%  3       Persistence (local sweep)       12.4334    20       1  0.0004  0.0348
+208                PAR (proposed)  frame-drop 30%  3                       PAR-noImg        0.1884     8       6  0.9750  1.0000
+209                PAR (proposed)  frame-drop 30%  3                        GPS+hist       -0.5133    16       9  0.6571  1.0000
+210                PAR (proposed)  frame-drop 30%  3       GRU (beam+telemetry seq.)        1.4386    16       9  0.4432  1.0000
+211                PAR (proposed)  frame-drop 30%  3                       ResNet-18       -2.7852    11      11  0.3548  1.0000
+212                PAR (proposed)  frame-drop 30%  3                 ResNet-18 + aug       -3.5885    11      10  0.2586  1.0000
+213                PAR (proposed)  frame-drop 30%  3  ResNet-18 + history (residual)        3.8487    11       6  0.2868  1.0000
+214                PAR (proposed)  frame-drop 30%  3          Fusion PAR x ResNet-18       -4.7262     1      19  0.0001  0.0103
+215                PAR (proposed)  frame-drop 30%  3    Fusion PAR x ResNet-18 + aug       -4.9235     2      16  0.0012  0.0882
+225                PAR (proposed)       low-light  2       Persistence (local sweep)       55.8406    27       1  0.0000  0.0007
+226                PAR (proposed)       low-light  2                       PAR-noImg        0.9695     9      13  0.6148  1.0000
+227                PAR (proposed)       low-light  2                        GPS+hist       -5.0396    17       9  0.5009  1.0000
+228                PAR (proposed)       low-light  2       GRU (beam+telemetry seq.)        5.0190    19       8  0.0716  1.0000
+229                PAR (proposed)       low-light  2                       ResNet-18       71.7316    28       2  0.0000  0.0000
+230                PAR (proposed)       low-light  2                 ResNet-18 + aug       -3.0574    13      15  0.9818  1.0000
+231                PAR (proposed)       low-light  2  ResNet-18 + history (residual)       28.7238    22       1  0.0000  0.0035
+232                PAR (proposed)       low-light  2          Fusion PAR x ResNet-18        6.8597    16       9  0.1094  1.0000
+233                PAR (proposed)       low-light  2    Fusion PAR x ResNet-18 + aug      -14.8898     3      24  0.0002  0.0182
+234                PAR (proposed)       low-light  3       Persistence (local sweep)       12.6048    20       0  0.0001  0.0091
+235                PAR (proposed)       low-light  3                       PAR-noImg        0.3598     8       8  0.8361  1.0000
+236                PAR (proposed)       low-light  3                        GPS+hist       -0.3419    17       9  0.5172  1.0000
+237                PAR (proposed)       low-light  3       GRU (beam+telemetry seq.)        1.6100    15      10  0.5272  1.0000
+238                PAR (proposed)       low-light  3                       ResNet-18       77.6983    30       0  0.0000  0.0002
+239                PAR (proposed)       low-light  3                 ResNet-18 + aug        4.2056    15      13  0.5237  1.0000
+240                PAR (proposed)       low-light  3  ResNet-18 + history (residual)       14.8133    16       5  0.0173  1.0000
+241                PAR (proposed)       low-light  3          Fusion PAR x ResNet-18        1.9597    18       3  0.0157  0.9424
+242                PAR (proposed)       low-light  3    Fusion PAR x ResNet-18 + aug       -5.1945     2      19  0.0021  0.1468
+252                PAR (proposed)       occlusion  2       Persistence (local sweep)       54.0897    27       1  0.0000  0.0038
+253                PAR (proposed)       occlusion  2                       PAR-noImg       -0.7813     8      18  0.1663  1.0000
+254                PAR (proposed)       occlusion  2                        GPS+hist       -6.7905    17       9  0.5677  1.0000
+255                PAR (proposed)       occlusion  2       GRU (beam+telemetry seq.)        3.2682    21       7  0.0288  1.0000
+256                PAR (proposed)       occlusion  2                       ResNet-18       59.2077    27       3  0.0000  0.0000
+257                PAR (proposed)       occlusion  2                 ResNet-18 + aug       16.4611    23       6  0.0067  0.4258
+258                PAR (proposed)       occlusion  2  ResNet-18 + history (residual)       21.0333    22       5  0.0008  0.0655
+259                PAR (proposed)       occlusion  2          Fusion PAR x ResNet-18       -7.8495    16       8  0.5485  1.0000
+260                PAR (proposed)       occlusion  2    Fusion PAR x ResNet-18 + aug      -14.7182     4      22  0.0002  0.0200
+261                PAR (proposed)       occlusion  3       Persistence (local sweep)       10.9890    17       0  0.0003  0.0261
+262                PAR (proposed)       occlusion  3                       PAR-noImg       -1.2560     6      13  0.1165  1.0000
+263                PAR (proposed)       occlusion  3                        GPS+hist       -1.9578    15      12  0.7186  1.0000
+264                PAR (proposed)       occlusion  3       GRU (beam+telemetry seq.)       -0.0058    13      11  0.7103  1.0000
+265                PAR (proposed)       occlusion  3                       ResNet-18       64.3205    29       1  0.0000  0.0000
+266                PAR (proposed)       occlusion  3                 ResNet-18 + aug       20.1248    28       2  0.0000  0.0001
+267                PAR (proposed)       occlusion  3  ResNet-18 + history (residual)       11.5311    12       9  0.2443  1.0000
+268                PAR (proposed)       occlusion  3          Fusion PAR x ResNet-18       -2.2204    12       9  0.3052  1.0000
+269                PAR (proposed)       occlusion  3    Fusion PAR x ResNet-18 + aug       -6.6936     1      16  0.0004  0.0299

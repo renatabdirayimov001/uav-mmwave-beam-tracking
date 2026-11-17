@@ -1,0 +1,313 @@
+ResNet-18 weights copied from /kaggle/input/datasets/renatabdirayimov/resnet18-weights/resnet18-f37072fd.pth
+ImageNet weights OK
+CSV: /kaggle/input/datasets/haythemkrid/deepsense6g-scenario-23/scenario23_dev_w_resources/scenario23_dev/scenario23.csv (11387, 17)
+columns: ['index', 'unit1_rgb', 'unit1_pwr_60ghz', 'unit1_loc', 'unit2_loc', 'unit2_speed', 'unit2_altitude', 'unit2_distance', 'unit2_height', 'unit2_x-speed', 'unit2_y-speed', 'unit2_z-speed', 'unit2_pitch', 'unit2_roll', 'seq_index', 'time_stamp[UTC]', 'unit1_beam_index']
+power: unit1_pwr_60ghz rgb: unit1_rgb loc: unit2_loc seq: seq_index extra: {'height': 'unit2_height', 'distance': 'unit2_distance', 'speed': 'unit2_speed', 'pitch': 'unit2_pitch', 'roll': 'unit2_roll'}
+txt files parsed in 138 s
+N=11387 frames, flights=35, flight length min/median/max 1/157/1464, images found 11387
+P(beam changes between consecutive frames) = 0.179
+images read in 85 s, array (11387, 270, 480, 3), 4.4 GB
+localisation done in 132 s, detection rate 0.965, Spearman(x-centroid, beam) = 0.881, Spearman(y-centroid, beam) = -0.022
+device: cuda
+small images + embedding in 24 s, emb (11387, 512)
+tabular learner: LightGBM
+
+=== h=0: 11129 samples; |Δb|>8: 0.0022; persistence correct 0.823
+   sanity h=0 random GPS-KNN: train top1 0.999, test top1 0.757
+   sanity h=0 random GPS: train top1 0.998, test top1 0.807
+   sanity h=0 random GPS+hist: train top1 1.000, test top1 0.826
+   sanity h=0 random Vision(emb): train top1 1.000, test top1 0.743
+   sanity h=0 random Fusion(emb+GPS): train top1 1.000, test top1 0.818
+   sanity h=0 random Fusion+hist: train top1 1.000, test top1 0.836
+   sanity h=0 random PAR-noImg: train top1 0.998, test top1 0.822
+   sanity h=0 random PAR (proposed): train top1 0.998, test top1 0.842
+h=0 random fold 0: Persistence=0.818, GPS-KNN=0.757, GPS=0.807, GPS+hist=0.826, Vision(emb)=0.743, Fusion(emb+GPS)=0.818, Fusion+hist=0.836, PAR-noImg=0.822, PAR (proposed)=0.842, ResNet-18 (fine-tuned)=0.853
+h=0 random fold 1: Persistence=0.820, GPS-KNN=0.742, GPS=0.797, GPS+hist=0.829, Vision(emb)=0.740, Fusion(emb+GPS)=0.802, Fusion+hist=0.824, PAR-noImg=0.819, PAR (proposed)=0.859, ResNet-18 (fine-tuned)=0.846
+h=0 random fold 2: Persistence=0.828, GPS-KNN=0.758, GPS=0.820, GPS+hist=0.835, Vision(emb)=0.751, Fusion(emb+GPS)=0.827, Fusion+hist=0.839, PAR-noImg=0.836, PAR (proposed)=0.855, ResNet-18 (fine-tuned)=0.856
+h=0 random fold 3: Persistence=0.816, GPS-KNN=0.759, GPS=0.807, GPS+hist=0.813, Vision(emb)=0.749, Fusion(emb+GPS)=0.815, Fusion+hist=0.829, PAR-noImg=0.821, PAR (proposed)=0.845, ResNet-18 (fine-tuned)=0.863
+h=0 random fold 4: Persistence=0.834, GPS-KNN=0.760, GPS=0.817, GPS+hist=0.840, Vision(emb)=0.772, Fusion(emb+GPS)=0.833, Fusion+hist=0.854, PAR-noImg=0.835, PAR (proposed)=0.858, ResNet-18 (fine-tuned)=0.861
+   sanity h=0 flight GPS-KNN: train top1 0.999, test top1 0.396
+   sanity h=0 flight GPS: train top1 0.998, test top1 0.510
+   sanity h=0 flight GPS+hist: train top1 1.000, test top1 0.839
+   sanity h=0 flight Vision(emb): train top1 1.000, test top1 0.421
+   sanity h=0 flight Fusion(emb+GPS): train top1 1.000, test top1 0.599
+   sanity h=0 flight Fusion+hist: train top1 1.000, test top1 0.847
+   sanity h=0 flight PAR-noImg: train top1 0.997, test top1 0.897
+   sanity h=0 flight PAR (proposed): train top1 0.997, test top1 0.903
+h=0 flight fold 0: Persistence=0.893, GPS-KNN=0.396, GPS=0.510, GPS+hist=0.839, Vision(emb)=0.421, Fusion(emb+GPS)=0.599, Fusion+hist=0.847, PAR-noImg=0.897, PAR (proposed)=0.903, ResNet-18 (fine-tuned)=0.888
+h=0 flight fold 1: Persistence=0.839, GPS-KNN=0.498, GPS=0.670, GPS+hist=0.767, Vision(emb)=0.372, Fusion(emb+GPS)=0.673, Fusion+hist=0.816, PAR-noImg=0.856, PAR (proposed)=0.878, ResNet-18 (fine-tuned)=0.850
+h=0 flight fold 2: Persistence=0.798, GPS-KNN=0.385, GPS=0.434, GPS+hist=0.768, Vision(emb)=0.382, Fusion(emb+GPS)=0.558, Fusion+hist=0.777, PAR-noImg=0.800, PAR (proposed)=0.830, ResNet-18 (fine-tuned)=0.816
+h=0 flight fold 3: Persistence=0.808, GPS-KNN=0.346, GPS=0.376, GPS+hist=0.725, Vision(emb)=0.362, Fusion(emb+GPS)=0.474, Fusion+hist=0.749, PAR-noImg=0.828, PAR (proposed)=0.853, ResNet-18 (fine-tuned)=0.843
+h=0 flight fold 4: Persistence=0.778, GPS-KNN=0.461, GPS=0.481, GPS+hist=0.745, Vision(emb)=0.421, Fusion(emb+GPS)=0.569, Fusion+hist=0.770, PAR-noImg=0.796, PAR (proposed)=0.827, ResNet-18 (fine-tuned)=0.792
+
+=== h=1: 11099 samples; |Δb|>8: 0.0026; persistence correct 0.738
+   sanity h=1 random GPS-KNN: train top1 0.999, test top1 0.794
+   sanity h=1 random GPS: train top1 0.998, test top1 0.824
+   sanity h=1 random GPS+hist: train top1 1.000, test top1 0.837
+   sanity h=1 random Vision(emb): train top1 1.000, test top1 0.704
+   sanity h=1 random Fusion(emb+GPS): train top1 1.000, test top1 0.823
+   sanity h=1 random Fusion+hist: train top1 1.000, test top1 0.837
+   sanity h=1 random PAR-noImg: train top1 0.998, test top1 0.805
+   sanity h=1 random PAR (proposed): train top1 0.998, test top1 0.827
+h=1 random fold 0: Persistence=0.738, GPS-KNN=0.794, GPS=0.824, GPS+hist=0.837, Vision(emb)=0.704, Fusion(emb+GPS)=0.823, Fusion+hist=0.837, PAR-noImg=0.805, PAR (proposed)=0.827
+h=1 random fold 1: Persistence=0.737, GPS-KNN=0.803, GPS=0.832, GPS+hist=0.835, Vision(emb)=0.719, Fusion(emb+GPS)=0.832, Fusion+hist=0.834, PAR-noImg=0.804, PAR (proposed)=0.818
+h=1 random fold 2: Persistence=0.738, GPS-KNN=0.791, GPS=0.827, GPS+hist=0.834, Vision(emb)=0.730, Fusion(emb+GPS)=0.822, Fusion+hist=0.828, PAR-noImg=0.815, PAR (proposed)=0.825
+h=1 random fold 3: Persistence=0.740, GPS-KNN=0.781, GPS=0.824, GPS+hist=0.828, Vision(emb)=0.708, Fusion(emb+GPS)=0.829, Fusion+hist=0.832, PAR-noImg=0.799, PAR (proposed)=0.815
+h=1 random fold 4: Persistence=0.737, GPS-KNN=0.791, GPS=0.834, GPS+hist=0.843, Vision(emb)=0.709, Fusion(emb+GPS)=0.840, Fusion+hist=0.843, PAR-noImg=0.825, PAR (proposed)=0.836
+   sanity h=1 flight GPS-KNN: train top1 0.999, test top1 0.412
+   sanity h=1 flight GPS: train top1 0.998, test top1 0.572
+   sanity h=1 flight GPS+hist: train top1 1.000, test top1 0.816
+   sanity h=1 flight Vision(emb): train top1 1.000, test top1 0.342
+   sanity h=1 flight Fusion(emb+GPS): train top1 1.000, test top1 0.603
+   sanity h=1 flight Fusion+hist: train top1 1.000, test top1 0.801
+   sanity h=1 flight PAR-noImg: train top1 0.997, test top1 0.879
+   sanity h=1 flight PAR (proposed): train top1 0.997, test top1 0.893
+h=1 flight fold 0: Persistence=0.866, GPS-KNN=0.412, GPS=0.572, GPS+hist=0.816, Vision(emb)=0.342, Fusion(emb+GPS)=0.603, Fusion+hist=0.801, PAR-noImg=0.879, PAR (proposed)=0.893
+h=1 flight fold 1: Persistence=0.759, GPS-KNN=0.536, GPS=0.701, GPS+hist=0.705, Vision(emb)=0.377, Fusion(emb+GPS)=0.709, Fusion+hist=0.785, PAR-noImg=0.808, PAR (proposed)=0.834
+h=1 flight fold 2: Persistence=0.699, GPS-KNN=0.452, GPS=0.474, GPS+hist=0.692, Vision(emb)=0.347, Fusion(emb+GPS)=0.603, Fusion+hist=0.718, PAR-noImg=0.755, PAR (proposed)=0.782
+h=1 flight fold 3: Persistence=0.700, GPS-KNN=0.403, GPS=0.397, GPS+hist=0.651, Vision(emb)=0.332, Fusion(emb+GPS)=0.439, Fusion+hist=0.654, PAR-noImg=0.776, PAR (proposed)=0.799
+h=1 flight fold 4: Persistence=0.666, GPS-KNN=0.485, GPS=0.538, GPS+hist=0.683, Vision(emb)=0.354, Fusion(emb+GPS)=0.598, Fusion+hist=0.700, PAR-noImg=0.746, PAR (proposed)=0.771
+
+=== h=3: 11039 samples; |Δb|>8: 0.0031; persistence correct 0.615
+   sanity h=3 random GPS-KNN: train top1 0.999, test top1 0.777
+   sanity h=3 random GPS: train top1 0.999, test top1 0.810
+   sanity h=3 random GPS+hist: train top1 1.000, test top1 0.816
+   sanity h=3 random Vision(emb): train top1 1.000, test top1 0.665
+   sanity h=3 random Fusion(emb+GPS): train top1 1.000, test top1 0.803
+   sanity h=3 random Fusion+hist: train top1 1.000, test top1 0.812
+   sanity h=3 random PAR-noImg: train top1 0.997, test top1 0.789
+   sanity h=3 random PAR (proposed): train top1 0.997, test top1 0.798
+h=3 random fold 0: Persistence=0.636, GPS-KNN=0.777, GPS=0.810, GPS+hist=0.816, Vision(emb)=0.665, Fusion(emb+GPS)=0.803, Fusion+hist=0.812, PAR-noImg=0.789, PAR (proposed)=0.798, ResNet-18 (fine-tuned)=0.692
+h=3 random fold 1: Persistence=0.612, GPS-KNN=0.784, GPS=0.815, GPS+hist=0.817, Vision(emb)=0.654, Fusion(emb+GPS)=0.794, Fusion+hist=0.816, PAR-noImg=0.779, PAR (proposed)=0.790, ResNet-18 (fine-tuned)=0.663
+h=3 random fold 2: Persistence=0.612, GPS-KNN=0.807, GPS=0.830, GPS+hist=0.835, Vision(emb)=0.654, Fusion(emb+GPS)=0.815, Fusion+hist=0.826, PAR-noImg=0.789, PAR (proposed)=0.798, ResNet-18 (fine-tuned)=0.669
+h=3 random fold 3: Persistence=0.614, GPS-KNN=0.781, GPS=0.818, GPS+hist=0.824, Vision(emb)=0.665, Fusion(emb+GPS)=0.803, Fusion+hist=0.815, PAR-noImg=0.785, PAR (proposed)=0.793, ResNet-18 (fine-tuned)=0.673
+h=3 random fold 4: Persistence=0.603, GPS-KNN=0.776, GPS=0.807, GPS+hist=0.818, Vision(emb)=0.642, Fusion(emb+GPS)=0.793, Fusion+hist=0.813, PAR-noImg=0.773, PAR (proposed)=0.776, ResNet-18 (fine-tuned)=0.651
+   sanity h=3 flight GPS-KNN: train top1 0.999, test top1 0.396
+   sanity h=3 flight GPS: train top1 0.999, test top1 0.589
+   sanity h=3 flight GPS+hist: train top1 1.000, test top1 0.728
+   sanity h=3 flight Vision(emb): train top1 1.000, test top1 0.294
+   sanity h=3 flight Fusion(emb+GPS): train top1 1.000, test top1 0.550
+   sanity h=3 flight Fusion+hist: train top1 1.000, test top1 0.729
+   sanity h=3 flight PAR-noImg: train top1 0.996, test top1 0.833
+   sanity h=3 flight PAR (proposed): train top1 0.996, test top1 0.841
+h=3 flight fold 0: Persistence=0.820, GPS-KNN=0.396, GPS=0.589, GPS+hist=0.728, Vision(emb)=0.294, Fusion(emb+GPS)=0.550, Fusion+hist=0.729, PAR-noImg=0.833, PAR (proposed)=0.841, ResNet-18 (fine-tuned)=0.733
+h=3 flight fold 1: Persistence=0.662, GPS-KNN=0.546, GPS=0.574, GPS+hist=0.608, Vision(emb)=0.259, Fusion(emb+GPS)=0.605, Fusion+hist=0.699, PAR-noImg=0.742, PAR (proposed)=0.764, ResNet-18 (fine-tuned)=0.418
+h=3 flight fold 2: Persistence=0.523, GPS-KNN=0.449, GPS=0.471, GPS+hist=0.575, Vision(emb)=0.252, Fusion(emb+GPS)=0.561, Fusion+hist=0.584, PAR-noImg=0.669, PAR (proposed)=0.695, ResNet-18 (fine-tuned)=0.478
+h=3 flight fold 3: Persistence=0.560, GPS-KNN=0.409, GPS=0.443, GPS+hist=0.525, Vision(emb)=0.289, Fusion(emb+GPS)=0.387, Fusion+hist=0.515, PAR-noImg=0.706, PAR (proposed)=0.725, ResNet-18 (fine-tuned)=0.409
+h=3 flight fold 4: Persistence=0.512, GPS-KNN=0.485, GPS=0.527, GPS+hist=0.575, Vision(emb)=0.275, Fusion(emb+GPS)=0.479, Fusion+hist=0.581, PAR-noImg=0.671, PAR (proposed)=0.690, ResNet-18 (fine-tuned)=0.441
+
+=== h=5: 10979 samples; |Δb|>8: 0.0054; persistence correct 0.538
+   sanity h=5 random GPS-KNN: train top1 0.999, test top1 0.717
+   sanity h=5 random GPS: train top1 0.998, test top1 0.801
+   sanity h=5 random GPS+hist: train top1 1.000, test top1 0.816
+   sanity h=5 random Vision(emb): train top1 1.000, test top1 0.626
+   sanity h=5 random Fusion(emb+GPS): train top1 1.000, test top1 0.775
+   sanity h=5 random Fusion+hist: train top1 1.000, test top1 0.806
+   sanity h=5 random PAR-noImg: train top1 0.995, test top1 0.755
+   sanity h=5 random PAR (proposed): train top1 0.995, test top1 0.760
+h=5 random fold 0: Persistence=0.538, GPS-KNN=0.717, GPS=0.801, GPS+hist=0.816, Vision(emb)=0.626, Fusion(emb+GPS)=0.775, Fusion+hist=0.806, PAR-noImg=0.755, PAR (proposed)=0.760
+h=5 random fold 1: Persistence=0.531, GPS-KNN=0.701, GPS=0.783, GPS+hist=0.804, Vision(emb)=0.601, Fusion(emb+GPS)=0.746, Fusion+hist=0.788, PAR-noImg=0.773, PAR (proposed)=0.764
+h=5 random fold 2: Persistence=0.546, GPS-KNN=0.725, GPS=0.808, GPS+hist=0.821, Vision(emb)=0.628, Fusion(emb+GPS)=0.779, Fusion+hist=0.819, PAR-noImg=0.773, PAR (proposed)=0.780
+h=5 random fold 3: Persistence=0.541, GPS-KNN=0.716, GPS=0.799, GPS+hist=0.811, Vision(emb)=0.617, Fusion(emb+GPS)=0.754, Fusion+hist=0.797, PAR-noImg=0.760, PAR (proposed)=0.769
+h=5 random fold 4: Persistence=0.535, GPS-KNN=0.702, GPS=0.787, GPS+hist=0.810, Vision(emb)=0.630, Fusion(emb+GPS)=0.768, Fusion+hist=0.799, PAR-noImg=0.756, PAR (proposed)=0.760
+   sanity h=5 flight GPS-KNN: train top1 0.999, test top1 0.280
+   sanity h=5 flight GPS: train top1 0.998, test top1 0.552
+   sanity h=5 flight GPS+hist: train top1 1.000, test top1 0.693
+   sanity h=5 flight Vision(emb): train top1 1.000, test top1 0.196
+   sanity h=5 flight Fusion(emb+GPS): train top1 1.000, test top1 0.569
+   sanity h=5 flight Fusion+hist: train top1 1.000, test top1 0.690
+   sanity h=5 flight PAR-noImg: train top1 0.993, test top1 0.793
+   sanity h=5 flight PAR (proposed): train top1 0.993, test top1 0.797
+h=5 flight fold 0: Persistence=0.781, GPS-KNN=0.280, GPS=0.552, GPS+hist=0.693, Vision(emb)=0.196, Fusion(emb+GPS)=0.569, Fusion+hist=0.690, PAR-noImg=0.793, PAR (proposed)=0.797
+h=5 flight fold 1: Persistence=0.587, GPS-KNN=0.442, GPS=0.502, GPS+hist=0.573, Vision(emb)=0.207, Fusion(emb+GPS)=0.467, Fusion+hist=0.620, PAR-noImg=0.700, PAR (proposed)=0.711
+h=5 flight fold 2: Persistence=0.414, GPS-KNN=0.353, GPS=0.401, GPS+hist=0.507, Vision(emb)=0.161, Fusion(emb+GPS)=0.411, Fusion+hist=0.465, PAR-noImg=0.597, PAR (proposed)=0.608
+h=5 flight fold 3: Persistence=0.485, GPS-KNN=0.279, GPS=0.435, GPS+hist=0.492, Vision(emb)=0.257, Fusion(emb+GPS)=0.346, Fusion+hist=0.478, PAR-noImg=0.632, PAR (proposed)=0.650
+h=5 flight fold 4: Persistence=0.423, GPS-KNN=0.392, GPS=0.418, GPS+hist=0.488, Vision(emb)=0.235, Fusion(emb+GPS)=0.361, Fusion+hist=0.470, PAR-noImg=0.586, PAR (proposed)=0.602
+
+                                    top1          top3          top5         pl_db       
+                                    mean    std   mean    std   mean    std   mean    std
+h protocol model                                                                         
+0 flight   Fusion(emb+GPS)         0.575  0.072  0.909  0.031  0.957  0.024  0.540  0.310
+           Fusion+hist             0.792  0.039  0.968  0.014  0.987  0.010  0.116  0.072
+           GPS                     0.494  0.110  0.881  0.039  0.949  0.024  0.735  0.396
+           GPS+hist                0.769  0.043  0.971  0.011  0.989  0.005  0.156  0.107
+           GPS-KNN                 0.417  0.061  0.770  0.075  0.814  0.069  0.916  0.182
+           PAR (proposed)          0.858  0.032  0.987  0.007  0.992  0.004  0.035  0.013
+           PAR-noImg               0.835  0.042  0.986  0.007  0.991  0.005  0.050  0.017
+           Persistence             0.823  0.045  0.977  0.011  0.991  0.005  0.061  0.023
+           ResNet-18 (fine-tuned)  0.838  0.036  0.990  0.004  0.996  0.002  0.068  0.025
+           Vision(emb)             0.392  0.028  0.752  0.052  0.868  0.051  1.370  0.298
+  random   Fusion(emb+GPS)         0.819  0.012  0.979  0.005  0.991  0.002  0.084  0.007
+           Fusion+hist             0.836  0.011  0.986  0.003  0.993  0.002  0.048  0.005
+           GPS                     0.810  0.009  0.969  0.005  0.988  0.001  0.121  0.016
+           GPS+hist                0.829  0.010  0.985  0.002  0.993  0.002  0.053  0.005
+           GPS-KNN                 0.755  0.008  0.956  0.007  0.972  0.004  0.236  0.018
+           PAR (proposed)          0.852  0.008  0.986  0.002  0.991  0.002  0.039  0.005
+           PAR-noImg               0.827  0.008  0.985  0.002  0.991  0.002  0.051  0.004
+           Persistence             0.823  0.008  0.977  0.002  0.991  0.001  0.061  0.004
+           ResNet-18 (fine-tuned)  0.856  0.007  0.993  0.001  0.997  0.001  0.027  0.003
+           Vision(emb)             0.751  0.013  0.954  0.007  0.982  0.005  0.199  0.015
+1 flight   Fusion(emb+GPS)         0.590  0.097  0.922  0.030  0.965  0.018  0.504  0.369
+           Fusion+hist             0.732  0.061  0.944  0.022  0.976  0.013  0.218  0.117
+           GPS                     0.536  0.114  0.905  0.030  0.961  0.019  0.580  0.345
+           GPS+hist                0.709  0.063  0.953  0.019  0.980  0.012  0.262  0.148
+           GPS-KNN                 0.458  0.055  0.798  0.075  0.831  0.072  0.743  0.180
+           PAR (proposed)          0.816  0.049  0.982  0.008  0.989  0.005  0.072  0.028
+           PAR-noImg               0.793  0.054  0.980  0.009  0.989  0.006  0.091  0.035
+           Persistence             0.738  0.079  0.943  0.024  0.986  0.007  0.187  0.074
+           Vision(emb)             0.350  0.017  0.744  0.072  0.870  0.048  1.472  0.301
+  random   Fusion(emb+GPS)         0.829  0.008  0.981  0.004  0.990  0.003  0.078  0.014
+           Fusion+hist             0.835  0.005  0.980  0.002  0.991  0.002  0.072  0.011
+           GPS                     0.828  0.005  0.979  0.004  0.991  0.003  0.071  0.007
+           GPS+hist                0.835  0.005  0.980  0.002  0.991  0.002  0.068  0.008
+           GPS-KNN                 0.792  0.008  0.971  0.003  0.978  0.002  0.124  0.011
+           PAR (proposed)          0.824  0.008  0.982  0.002  0.990  0.002  0.064  0.011
+           PAR-noImg               0.810  0.010  0.980  0.003  0.990  0.002  0.074  0.011
+           Persistence             0.738  0.001  0.944  0.005  0.986  0.002  0.187  0.005
+           Vision(emb)             0.714  0.011  0.935  0.003  0.973  0.002  0.294  0.020
+3 flight   Fusion(emb+GPS)         0.516  0.085  0.879  0.035  0.943  0.032  0.643  0.361
+           Fusion+hist             0.621  0.089  0.902  0.024  0.950  0.018  0.460  0.221
+           GPS                     0.521  0.063  0.888  0.033  0.945  0.023  0.680  0.340
+           GPS+hist                0.602  0.076  0.908  0.017  0.959  0.019  0.500  0.188
+           GPS-KNN                 0.457  0.061  0.779  0.078  0.823  0.082  0.780  0.168
+           PAR (proposed)          0.743  0.062  0.963  0.018  0.984  0.009  0.174  0.068
+           PAR-noImg               0.724  0.068  0.963  0.017  0.982  0.010  0.190  0.071
+           Persistence             0.615  0.129  0.859  0.060  0.953  0.021  0.593  0.274
+           ResNet-18 (fine-tuned)  0.496  0.135  0.831  0.066  0.930  0.030  0.940  0.418
+           Vision(emb)             0.274  0.018  0.645  0.092  0.821  0.066  1.959  0.284
+  random   Fusion(emb+GPS)         0.802  0.009  0.964  0.004  0.984  0.002  0.133  0.021
+           Fusion+hist             0.817  0.006  0.968  0.005  0.987  0.001  0.112  0.012
+           GPS                     0.816  0.009  0.972  0.003  0.988  0.001  0.097  0.015
+           GPS+hist                0.822  0.008  0.971  0.003  0.988  0.002  0.095  0.015
+           GPS-KNN                 0.785  0.013  0.965  0.005  0.974  0.004  0.160  0.014
+           PAR (proposed)          0.791  0.009  0.971  0.002  0.986  0.003  0.114  0.009
+           PAR-noImg               0.783  0.007  0.971  0.002  0.987  0.003  0.117  0.010
+           Persistence             0.615  0.012  0.859  0.010  0.953  0.005  0.593  0.038
+           ResNet-18 (fine-tuned)  0.670  0.015  0.915  0.007  0.970  0.003  0.493  0.041
+           Vision(emb)             0.656  0.010  0.895  0.007  0.951  0.004  0.577  0.060
+5 flight   Fusion(emb+GPS)         0.431  0.090  0.815  0.045  0.898  0.026  1.134  0.437
+           Fusion+hist             0.545  0.104  0.852  0.040  0.920  0.030  0.805  0.289
+           GPS                     0.461  0.063  0.836  0.051  0.913  0.027  0.990  0.352
+           GPS+hist                0.551  0.087  0.865  0.034  0.931  0.021  0.761  0.257
+           GPS-KNN                 0.349  0.071  0.681  0.091  0.758  0.069  1.265  0.223
+           PAR (proposed)          0.674  0.082  0.940  0.027  0.969  0.017  0.318  0.137
+           PAR-noImg               0.662  0.086  0.937  0.028  0.972  0.017  0.335  0.145
+           Persistence             0.538  0.152  0.775  0.099  0.908  0.048  0.979  0.482
+           Vision(emb)             0.211  0.037  0.547  0.096  0.741  0.103  2.345  0.308
+  random   Fusion(emb+GPS)         0.764  0.014  0.941  0.004  0.971  0.002  0.264  0.015
+           Fusion+hist             0.802  0.011  0.955  0.004  0.979  0.002  0.153  0.007
+           GPS                     0.796  0.010  0.954  0.002  0.976  0.003  0.190  0.008
+           GPS+hist                0.812  0.006  0.959  0.003  0.981  0.002  0.133  0.014
+           GPS-KNN                 0.712  0.011  0.925  0.005  0.955  0.003  0.433  0.023
+           PAR (proposed)          0.767  0.008  0.962  0.003  0.980  0.002  0.174  0.011
+           PAR-noImg               0.764  0.009  0.960  0.003  0.981  0.002  0.169  0.015
+           Persistence             0.538  0.006  0.775  0.009  0.908  0.006  0.979  0.032
+           Vision(emb)             0.620  0.012  0.860  0.010  0.924  0.007  0.801  0.040
+
+Top-1, random vs flight-disjoint (leakage gap in pp):
+protocol                  flight  random  leak_gap_pp
+h model                                              
+0 Fusion(emb+GPS)          0.575   0.819       24.439
+  Fusion+hist              0.792   0.836        4.459
+  GPS                      0.494   0.810       31.510
+  GPS+hist                 0.769   0.829        5.978
+  GPS-KNN                  0.417   0.755       33.771
+  PAR (proposed)           0.858   0.852       -0.644
+  PAR-noImg                0.835   0.827       -0.877
+  Persistence              0.823   0.823        0.004
+  ResNet-18 (fine-tuned)   0.838   0.856        1.793
+  Vision(emb)              0.392   0.751       35.949
+1 Fusion(emb+GPS)          0.590   0.829       23.889
+  Fusion+hist              0.732   0.835       10.309
+  GPS                      0.536   0.828       29.179
+  GPS+hist                 0.709   0.835       12.600
+  GPS-KNN                  0.458   0.792       33.457
+  PAR (proposed)           0.816   0.824        0.843
+  PAR-noImg                0.793   0.810        1.690
+  Persistence              0.738   0.738        0.008
+  Vision(emb)              0.350   0.714       36.380
+3 Fusion(emb+GPS)          0.516   0.802       28.558
+  Fusion+hist              0.621   0.817       19.507
+  GPS                      0.521   0.816       29.542
+  GPS+hist                 0.602   0.822       21.965
+  GPS-KNN                  0.457   0.785       32.740
+  PAR (proposed)           0.743   0.791        4.763
+  PAR-noImg                0.724   0.783        5.860
+  Persistence              0.615   0.615        0.014
+  ResNet-18 (fine-tuned)   0.496   0.670       17.372
+  Vision(emb)              0.274   0.656       38.194
+5 Fusion(emb+GPS)          0.431   0.764       33.345
+  Fusion+hist              0.545   0.802       25.708
+  GPS                      0.461   0.796       33.422
+  GPS+hist                 0.551   0.812       26.151
+  GPS-KNN                  0.349   0.712       36.325
+  PAR (proposed)           0.674   0.767        9.303
+  PAR-noImg                0.662   0.764       10.205
+  Persistence              0.538   0.538        0.006
+  Vision(emb)              0.211   0.620       40.899
+
+PAR vs others, per-flight top-1 (flight-disjoint):
+    h                      vs  mean_diff_pp  wins  losses  n_flights       p
+0   0             Persistence        3.8381    25       2         30  0.0000
+1   0                 GPS-KNN       41.5585    29       0         30  0.0000
+2   0                     GPS       34.2413    28       1         30  0.0000
+3   0                GPS+hist        7.6721    25       5         30  0.0002
+4   0             Vision(emb)       43.3769    29       0         30  0.0000
+5   0         Fusion(emb+GPS)       28.1506    28       2         30  0.0000
+6   0             Fusion+hist        7.2058    26       3         30  0.0001
+7   0               PAR-noImg        3.0331    24       3         30  0.0000
+8   0  ResNet-18 (fine-tuned)        3.3145    20       8         30  0.0123
+9   1             Persistence        8.6200    27       1         30  0.0000
+10  1                 GPS-KNN       31.3197    29       1         30  0.0000
+11  1                     GPS       24.9661    27       3         30  0.0000
+12  1                GPS+hist        9.4286    23       4         30  0.0000
+13  1             Vision(emb)       43.4345    30       0         30  0.0000
+14  1         Fusion(emb+GPS)       22.3283    27       2         30  0.0000
+15  1             Fusion+hist       10.5660    25       3         30  0.0000
+16  1               PAR-noImg        1.5131    20       8         30  0.0072
+17  3             Persistence       13.1462    28       1         30  0.0000
+18  3                 GPS-KNN       25.9055    28       2         30  0.0000
+19  3                     GPS       21.0816    28       2         30  0.0000
+20  3                GPS+hist       15.3748    26       3         30  0.0000
+21  3             Vision(emb)       43.3404    30       0         30  0.0000
+22  3         Fusion(emb+GPS)       22.2004    30       0         30  0.0000
+23  3             Fusion+hist       13.8194    26       4         30  0.0000
+24  3               PAR-noImg        1.6656    23       4         30  0.0062
+25  3  ResNet-18 (fine-tuned)       28.3406    30       0         30  0.0000
+26  5             Persistence       12.8874    25       2         30  0.0000
+27  5                 GPS-KNN       28.6586    28       1         30  0.0000
+28  5                     GPS       21.7897    28       1         30  0.0000
+29  5                GPS+hist       10.6013    24       5         30  0.0001
+30  5             Vision(emb)       40.5393    29       0         30  0.0000
+31  5         Fusion(emb+GPS)       26.1037    29       0         30  0.0000
+32  5             Fusion+hist       14.9697    26       2         30  0.0000
+33  5               PAR-noImg       -0.5711    15       9         30  0.7642
+
+Cost:
+                                         model      size           unit  latency_ms device
+0                                      GPS-KNN     26700  stored values    0.974621    cpu
+1                                          GPS    192930     tree nodes    1.226125    cpu
+2                                     GPS+hist    185252     tree nodes    1.185912    cpu
+3                                  Vision(emb)    200410     tree nodes    1.193194    cpu
+4                              Fusion(emb+GPS)    189988     tree nodes    1.216335    cpu
+5                                  Fusion+hist    186154     tree nodes    1.230632    cpu
+6                                    PAR-noImg     66788     tree nodes    0.953890    cpu
+7                               PAR (proposed)     65496     tree nodes    1.012488    cpu
+8                       ResNet-18 (fine-tuned)  11192928     parameters    4.525031   cuda
+9  ResNet-18 embedding (for Vision/Fusion GBT)  11176512     parameters         NaN   cuda
+robustness done: low-light
+robustness done: blur
+robustness done: occlusion
+robustness done: frame-drop 30%
+
+Robustness (top-1, flight-disjoint, trained on clean images):
+                           blur  frame-drop 30%  low-light  occlusion  clean
+h model                                                                     
+0 Fusion+hist             0.776           0.792      0.740      0.774  0.792
+  PAR (proposed)          0.838           0.850      0.834      0.822  0.858
+  ResNet-18 (fine-tuned)  0.502           0.856      0.009      0.040  0.838
+  Vision(emb)             0.153           0.388      0.120      0.145  0.392
+3 Fusion+hist             0.559           0.619      0.528      0.530  0.621
+  PAR (proposed)          0.702           0.725      0.706      0.652  0.743
+  ResNet-18 (fine-tuned)  0.493           0.568      0.009      0.025  0.496
+  Vision(emb)             0.114           0.264      0.128      0.163  0.274

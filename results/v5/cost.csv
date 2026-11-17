@@ -1,0 +1,17 @@
+model,params_or_nodes,unit,bytes,lat_cpu1_ms,lat_gpu_ms
+GPS-KNN,26700,stored values,213600,1.0521330999927159,
+GPS,192930,tree nodes,11150196,1.1778854699969088,
+GPS+hist,185252,tree nodes,10957612,1.0907512700032385,
+Vision(emb),200428,tree nodes,11837734,1.1442731600072875,
+Fusion(emb+GPS),189636,tree nodes,11262507,1.1060641600033705,
+Fusion+hist,186132,tree nodes,11114465,1.3683245999982319,
+PAR-noImg,66788,tree nodes,4127847,0.8905560199946194,
+PAR (proposed),65570,tree nodes,4088670,0.9081766200051788,
+"Abl: PAR features, absolute target",183088,tree nodes,10985380,1.1190159599937033,
+Abl: history-only residual,74356,tree nodes,4522143,0.9023867800078733,
+Abl: PAR without telemetry,68876,tree nodes,4293616,0.8572100499986846,
+Abl: PAR non-causal cues (v4),65496,tree nodes,4086496,0.9009813600005145,
+ResNet-18 (fine-tuned),11192928,parameters,44851467,36.72161404997496,3.654772370000501
+ResNet-18 + augmentation,11192928,parameters,44851467,37.97928439998941,3.005980150001051
+ResNet-18 + history (residual),11323729,parameters,45375367,37.43095055001504,3.146068859996376
+image cues (causal background subtraction),0,-,0,12.654510741595212,

@@ -1,0 +1,499 @@
+ResNet-18 weights copied from /kaggle/input/datasets/renatabdirayimov/resnet18-weights/resnet18-f37072fd.pth
+ImageNet weights OK
+device: cuda | FAST: False
+CSV: /kaggle/input/datasets/haythemkrid/deepsense6g-scenario-23/scenario23_dev_w_resources/scenario23_dev/scenario23.csv (11387, 17)
+columns: ['index', 'unit1_rgb', 'unit1_pwr_60ghz', 'unit1_loc', 'unit2_loc', 'unit2_speed', 'unit2_altitude', 'unit2_distance', 'unit2_height', 'unit2_x-speed', 'unit2_y-speed', 'unit2_z-speed', 'unit2_pitch', 'unit2_roll', 'seq_index', 'time_stamp[UTC]', 'unit1_beam_index']
+power: unit1_pwr_60ghz rgb: unit1_rgb loc: unit2_loc seq: seq_index time: time_stamp[UTC] extra: {'height': 'unit2_height', 'distance': 'unit2_distance', 'speed': 'unit2_speed', 'pitch': 'unit2_pitch', 'roll': 'unit2_roll'}
+txt parsed in 174 s; N=11387, flights=35, length min/median/max 1/157/1464, images 11387
+P(beam changes between consecutive samples) = 0.179
+images read in 76 s, (11387, 270, 480, 3), 4.4 GB
+cues causal: detection rate 0.970, Spearman(x-centroid, beam) = 0.714
+cues non-causal (v4): detection rate 0.965, Spearman(x-centroid, beam) = 0.881
+causal cue time 12.65 ms/frame (single process, incl. per-flight median)
+small images on cuda + embedding in 18 s
+degraded set low-light ready in 303 s
+degraded set blur ready in 127 s
+degraded set occlusion ready in 95 s
+
+=== h=0: 11129 samples; |Δb|>8: 0.0022; persistence correct 0.823 (1102 s)
+   sanity h=0 random GPS: train top1 0.998
+   sanity h=0 random PAR (proposed): train top1 0.998
+h=0 random fold 0 (91 s): Persistence=0.818, GPS-KNN=0.757, GPS=0.807, GPS+hist=0.826, Vision(emb)=0.744, Fusion(emb+GPS)=0.820, Fusion+hist=0.832, PAR-noImg=0.822, PAR (proposed)=0.834, GRU (beam+telemetry seq.)=0.832, ResNet-18 (fine-tuned)=0.862
+h=0 random fold 1 (86 s): Persistence=0.820, GPS-KNN=0.742, GPS=0.797, GPS+hist=0.829, Vision(emb)=0.731, Fusion(emb+GPS)=0.800, Fusion+hist=0.828, PAR-noImg=0.819, PAR (proposed)=0.845, GRU (beam+telemetry seq.)=0.837, ResNet-18 (fine-tuned)=0.852
+h=0 random fold 2 (86 s): Persistence=0.828, GPS-KNN=0.758, GPS=0.820, GPS+hist=0.835, Vision(emb)=0.757, Fusion(emb+GPS)=0.828, Fusion+hist=0.839, PAR-noImg=0.836, PAR (proposed)=0.847, GRU (beam+telemetry seq.)=0.845, ResNet-18 (fine-tuned)=0.849
+h=0 random fold 3 (86 s): Persistence=0.816, GPS-KNN=0.759, GPS=0.807, GPS+hist=0.813, Vision(emb)=0.747, Fusion(emb+GPS)=0.812, Fusion+hist=0.824, PAR-noImg=0.821, PAR (proposed)=0.836, GRU (beam+telemetry seq.)=0.827, ResNet-18 (fine-tuned)=0.859
+h=0 random fold 4 (87 s): Persistence=0.834, GPS-KNN=0.760, GPS=0.817, GPS+hist=0.840, Vision(emb)=0.774, Fusion(emb+GPS)=0.822, Fusion+hist=0.853, PAR-noImg=0.835, PAR (proposed)=0.849, GRU (beam+telemetry seq.)=0.857, ResNet-18 (fine-tuned)=0.860
+   sanity h=0 flight GPS: train top1 0.998
+   sanity h=0 flight PAR (proposed): train top1 0.997
+   closed-loop k=3: Persistence (local sweep)=0.990, PAR-noImg=0.993, PAR (proposed)=0.993, GPS+hist=0.984, GRU (beam+telemetry seq.)=0.987, ResNet-18 (fine-tuned)=0.987
+h=0 flight fold 0 (252 s): Persistence=0.893, GPS-KNN=0.396, GPS=0.510, GPS+hist=0.839, Vision(emb)=0.416, Fusion(emb+GPS)=0.606, Fusion+hist=0.842, PAR-noImg=0.897, PAR (proposed)=0.901, Abl: PAR features, absolute target=0.820, Abl: history-only residual=0.886, Abl: PAR without telemetry=0.908, Abl: PAR non-causal cues (v4)=0.903, GRU (beam+telemetry seq.)=0.861, ResNet-18 (fine-tuned)=0.863, ResNet-18 + augmentation=0.836, ResNet-18 + history (residual)=0.899
+   closed-loop k=3: Persistence (local sweep)=0.621, PAR-noImg=0.980, PAR (proposed)=0.984, GPS+hist=0.939, GRU (beam+telemetry seq.)=0.970, ResNet-18 (fine-tuned)=0.983
+h=0 flight fold 1 (233 s): Persistence=0.839, GPS-KNN=0.498, GPS=0.670, GPS+hist=0.767, Vision(emb)=0.384, Fusion(emb+GPS)=0.659, Fusion+hist=0.820, PAR-noImg=0.856, PAR (proposed)=0.866, Abl: PAR features, absolute target=0.844, Abl: history-only residual=0.838, Abl: PAR without telemetry=0.870, Abl: PAR non-causal cues (v4)=0.878, GRU (beam+telemetry seq.)=0.848, ResNet-18 (fine-tuned)=0.834, ResNet-18 + augmentation=0.854, ResNet-18 + history (residual)=0.846
+   closed-loop k=3: Persistence (local sweep)=0.907, PAR-noImg=0.929, PAR (proposed)=0.963, GPS+hist=0.969, GRU (beam+telemetry seq.)=0.966, ResNet-18 (fine-tuned)=0.984
+h=0 flight fold 2 (233 s): Persistence=0.798, GPS-KNN=0.385, GPS=0.434, GPS+hist=0.768, Vision(emb)=0.390, Fusion(emb+GPS)=0.566, Fusion+hist=0.779, PAR-noImg=0.800, PAR (proposed)=0.823, Abl: PAR features, absolute target=0.799, Abl: history-only residual=0.785, Abl: PAR without telemetry=0.826, Abl: PAR non-causal cues (v4)=0.830, GRU (beam+telemetry seq.)=0.788, ResNet-18 (fine-tuned)=0.810, ResNet-18 + augmentation=0.813, ResNet-18 + history (residual)=0.813
+   closed-loop k=3: Persistence (local sweep)=0.731, PAR-noImg=0.861, PAR (proposed)=0.906, GPS+hist=0.936, GRU (beam+telemetry seq.)=0.947, ResNet-18 (fine-tuned)=0.981
+h=0 flight fold 3 (228 s): Persistence=0.808, GPS-KNN=0.346, GPS=0.376, GPS+hist=0.725, Vision(emb)=0.349, Fusion(emb+GPS)=0.463, Fusion+hist=0.757, PAR-noImg=0.828, PAR (proposed)=0.847, Abl: PAR features, absolute target=0.810, Abl: history-only residual=0.812, Abl: PAR without telemetry=0.854, Abl: PAR non-causal cues (v4)=0.853, GRU (beam+telemetry seq.)=0.817, ResNet-18 (fine-tuned)=0.847, ResNet-18 + augmentation=0.847, ResNet-18 + history (residual)=0.834
+   closed-loop k=3: Persistence (local sweep)=0.763, PAR-noImg=0.981, PAR (proposed)=0.964, GPS+hist=0.962, GRU (beam+telemetry seq.)=0.955, ResNet-18 (fine-tuned)=0.991
+h=0 flight fold 4 (226 s): Persistence=0.778, GPS-KNN=0.461, GPS=0.481, GPS+hist=0.745, Vision(emb)=0.417, Fusion(emb+GPS)=0.576, Fusion+hist=0.773, PAR-noImg=0.796, PAR (proposed)=0.822, Abl: PAR features, absolute target=0.819, Abl: history-only residual=0.771, Abl: PAR without telemetry=0.832, Abl: PAR non-causal cues (v4)=0.827, GRU (beam+telemetry seq.)=0.753, ResNet-18 (fine-tuned)=0.806, ResNet-18 + augmentation=0.810, ResNet-18 + history (residual)=0.800
+
+=== h=1: 11099 samples; |Δb|>8: 0.0026; persistence correct 0.738 (2710 s)
+   sanity h=1 random GPS: train top1 0.998
+   sanity h=1 random PAR (proposed): train top1 0.998
+h=1 random fold 0 (53 s): Persistence=0.738, GPS-KNN=0.794, GPS=0.824, GPS+hist=0.837, Vision(emb)=0.706, Fusion(emb+GPS)=0.821, Fusion+hist=0.835, PAR-noImg=0.805, PAR (proposed)=0.815, GRU (beam+telemetry seq.)=0.803
+h=1 random fold 1 (52 s): Persistence=0.737, GPS-KNN=0.803, GPS=0.832, GPS+hist=0.835, Vision(emb)=0.714, Fusion(emb+GPS)=0.827, Fusion+hist=0.835, PAR-noImg=0.804, PAR (proposed)=0.809, GRU (beam+telemetry seq.)=0.821
+h=1 random fold 2 (52 s): Persistence=0.738, GPS-KNN=0.791, GPS=0.827, GPS+hist=0.834, Vision(emb)=0.727, Fusion(emb+GPS)=0.823, Fusion+hist=0.827, PAR-noImg=0.815, PAR (proposed)=0.823, GRU (beam+telemetry seq.)=0.811
+h=1 random fold 3 (52 s): Persistence=0.740, GPS-KNN=0.781, GPS=0.824, GPS+hist=0.828, Vision(emb)=0.707, Fusion(emb+GPS)=0.827, Fusion+hist=0.829, PAR-noImg=0.799, PAR (proposed)=0.808, GRU (beam+telemetry seq.)=0.822
+h=1 random fold 4 (52 s): Persistence=0.737, GPS-KNN=0.791, GPS=0.834, GPS+hist=0.843, Vision(emb)=0.717, Fusion(emb+GPS)=0.832, Fusion+hist=0.846, PAR-noImg=0.825, PAR (proposed)=0.831, GRU (beam+telemetry seq.)=0.829
+   sanity h=1 flight GPS: train top1 0.998
+   sanity h=1 flight PAR (proposed): train top1 0.997
+h=1 flight fold 0 (147 s): Persistence=0.866, GPS-KNN=0.412, GPS=0.572, GPS+hist=0.816, Vision(emb)=0.375, Fusion(emb+GPS)=0.617, Fusion+hist=0.796, PAR-noImg=0.879, PAR (proposed)=0.891, Abl: PAR features, absolute target=0.771, Abl: history-only residual=0.832, Abl: PAR without telemetry=0.866, Abl: PAR non-causal cues (v4)=0.893, GRU (beam+telemetry seq.)=0.818, ResNet-18 (fine-tuned)=0.743, ResNet-18 + history (residual)=0.856
+h=1 flight fold 1 (142 s): Persistence=0.759, GPS-KNN=0.536, GPS=0.701, GPS+hist=0.705, Vision(emb)=0.378, Fusion(emb+GPS)=0.680, Fusion+hist=0.784, PAR-noImg=0.808, PAR (proposed)=0.820, Abl: PAR features, absolute target=0.711, Abl: history-only residual=0.781, Abl: PAR without telemetry=0.816, Abl: PAR non-causal cues (v4)=0.834, GRU (beam+telemetry seq.)=0.791, ResNet-18 (fine-tuned)=0.668, ResNet-18 + history (residual)=0.792
+h=1 flight fold 2 (141 s): Persistence=0.699, GPS-KNN=0.452, GPS=0.474, GPS+hist=0.692, Vision(emb)=0.345, Fusion(emb+GPS)=0.613, Fusion+hist=0.711, PAR-noImg=0.755, PAR (proposed)=0.765, Abl: PAR features, absolute target=0.726, Abl: history-only residual=0.704, Abl: PAR without telemetry=0.768, Abl: PAR non-causal cues (v4)=0.782, GRU (beam+telemetry seq.)=0.719, ResNet-18 (fine-tuned)=0.657, ResNet-18 + history (residual)=0.722
+h=1 flight fold 3 (140 s): Persistence=0.700, GPS-KNN=0.403, GPS=0.397, GPS+hist=0.651, Vision(emb)=0.335, Fusion(emb+GPS)=0.428, Fusion+hist=0.649, PAR-noImg=0.776, PAR (proposed)=0.786, Abl: PAR features, absolute target=0.716, Abl: history-only residual=0.720, Abl: PAR without telemetry=0.793, Abl: PAR non-causal cues (v4)=0.799, GRU (beam+telemetry seq.)=0.692, ResNet-18 (fine-tuned)=0.645, ResNet-18 + history (residual)=0.746
+h=1 flight fold 4 (141 s): Persistence=0.666, GPS-KNN=0.485, GPS=0.538, GPS+hist=0.683, Vision(emb)=0.345, Fusion(emb+GPS)=0.598, Fusion+hist=0.706, PAR-noImg=0.746, PAR (proposed)=0.757, Abl: PAR features, absolute target=0.741, Abl: history-only residual=0.691, Abl: PAR without telemetry=0.769, Abl: PAR non-causal cues (v4)=0.771, GRU (beam+telemetry seq.)=0.676, ResNet-18 (fine-tuned)=0.640, ResNet-18 + history (residual)=0.727
+
+=== h=3: 11039 samples; |Δb|>8: 0.0031; persistence correct 0.615 (3683 s)
+   sanity h=3 random GPS: train top1 0.999
+   sanity h=3 random PAR (proposed): train top1 0.997
+h=3 random fold 0 (92 s): Persistence=0.636, GPS-KNN=0.777, GPS=0.810, GPS+hist=0.816, Vision(emb)=0.667, Fusion(emb+GPS)=0.801, Fusion+hist=0.821, PAR-noImg=0.789, PAR (proposed)=0.791, GRU (beam+telemetry seq.)=0.783, ResNet-18 (fine-tuned)=0.691
+h=3 random fold 1 (90 s): Persistence=0.612, GPS-KNN=0.784, GPS=0.815, GPS+hist=0.817, Vision(emb)=0.654, Fusion(emb+GPS)=0.798, Fusion+hist=0.813, PAR-noImg=0.779, PAR (proposed)=0.779, GRU (beam+telemetry seq.)=0.790, ResNet-18 (fine-tuned)=0.672
+h=3 random fold 2 (90 s): Persistence=0.612, GPS-KNN=0.807, GPS=0.830, GPS+hist=0.835, Vision(emb)=0.661, Fusion(emb+GPS)=0.809, Fusion+hist=0.833, PAR-noImg=0.789, PAR (proposed)=0.798, GRU (beam+telemetry seq.)=0.799, ResNet-18 (fine-tuned)=0.665
+h=3 random fold 3 (90 s): Persistence=0.614, GPS-KNN=0.781, GPS=0.818, GPS+hist=0.824, Vision(emb)=0.669, Fusion(emb+GPS)=0.807, Fusion+hist=0.822, PAR-noImg=0.785, PAR (proposed)=0.778, GRU (beam+telemetry seq.)=0.791, ResNet-18 (fine-tuned)=0.691
+h=3 random fold 4 (91 s): Persistence=0.603, GPS-KNN=0.776, GPS=0.807, GPS+hist=0.818, Vision(emb)=0.646, Fusion(emb+GPS)=0.797, Fusion+hist=0.816, PAR-noImg=0.773, PAR (proposed)=0.770, GRU (beam+telemetry seq.)=0.793, ResNet-18 (fine-tuned)=0.637
+   sanity h=3 flight GPS: train top1 0.999
+   sanity h=3 flight PAR (proposed): train top1 0.996
+h=3 flight fold 0 (215 s): Persistence=0.820, GPS-KNN=0.396, GPS=0.589, GPS+hist=0.728, Vision(emb)=0.272, Fusion(emb+GPS)=0.575, Fusion+hist=0.732, PAR-noImg=0.833, PAR (proposed)=0.842, Abl: PAR features, absolute target=0.706, Abl: history-only residual=0.779, Abl: PAR without telemetry=0.829, Abl: PAR non-causal cues (v4)=0.841, GRU (beam+telemetry seq.)=0.751, ResNet-18 (fine-tuned)=0.662, ResNet-18 + augmentation=0.712, ResNet-18 + history (residual)=0.814
+h=3 flight fold 1 (212 s): Persistence=0.662, GPS-KNN=0.546, GPS=0.574, GPS+hist=0.608, Vision(emb)=0.256, Fusion(emb+GPS)=0.599, Fusion+hist=0.674, PAR-noImg=0.742, PAR (proposed)=0.751, Abl: PAR features, absolute target=0.641, Abl: history-only residual=0.693, Abl: PAR without telemetry=0.738, Abl: PAR non-causal cues (v4)=0.764, GRU (beam+telemetry seq.)=0.702, ResNet-18 (fine-tuned)=0.398, ResNet-18 + augmentation=0.627, ResNet-18 + history (residual)=0.651
+h=3 flight fold 2 (211 s): Persistence=0.523, GPS-KNN=0.449, GPS=0.471, GPS+hist=0.575, Vision(emb)=0.228, Fusion(emb+GPS)=0.556, Fusion+hist=0.576, PAR-noImg=0.669, PAR (proposed)=0.675, Abl: PAR features, absolute target=0.581, Abl: history-only residual=0.546, Abl: PAR without telemetry=0.636, Abl: PAR non-causal cues (v4)=0.695, GRU (beam+telemetry seq.)=0.623, ResNet-18 (fine-tuned)=0.450, ResNet-18 + augmentation=0.465, ResNet-18 + history (residual)=0.597
+h=3 flight fold 3 (209 s): Persistence=0.560, GPS-KNN=0.409, GPS=0.443, GPS+hist=0.525, Vision(emb)=0.275, Fusion(emb+GPS)=0.387, Fusion+hist=0.500, PAR-noImg=0.706, PAR (proposed)=0.716, Abl: PAR features, absolute target=0.546, Abl: history-only residual=0.586, Abl: PAR without telemetry=0.695, Abl: PAR non-causal cues (v4)=0.725, GRU (beam+telemetry seq.)=0.616, ResNet-18 (fine-tuned)=0.414, ResNet-18 + augmentation=0.448, ResNet-18 + history (residual)=0.639
+h=3 flight fold 4 (209 s): Persistence=0.512, GPS-KNN=0.485, GPS=0.527, GPS+hist=0.575, Vision(emb)=0.271, Fusion(emb+GPS)=0.487, Fusion+hist=0.574, PAR-noImg=0.671, PAR (proposed)=0.672, Abl: PAR features, absolute target=0.604, Abl: history-only residual=0.560, Abl: PAR without telemetry=0.654, Abl: PAR non-causal cues (v4)=0.690, GRU (beam+telemetry seq.)=0.574, ResNet-18 (fine-tuned)=0.436, ResNet-18 + augmentation=0.436, ResNet-18 + history (residual)=0.554
+
+=== h=5: 10979 samples; |Δb|>8: 0.0054; persistence correct 0.538 (5192 s)
+   sanity h=5 random GPS: train top1 0.998
+   sanity h=5 random PAR (proposed): train top1 0.995
+h=5 random fold 0 (59 s): Persistence=0.538, GPS-KNN=0.717, GPS=0.801, GPS+hist=0.816, Vision(emb)=0.629, Fusion(emb+GPS)=0.786, Fusion+hist=0.816, PAR-noImg=0.755, PAR (proposed)=0.760, GRU (beam+telemetry seq.)=0.768
+h=5 random fold 1 (57 s): Persistence=0.531, GPS-KNN=0.701, GPS=0.783, GPS+hist=0.804, Vision(emb)=0.601, Fusion(emb+GPS)=0.752, Fusion+hist=0.791, PAR-noImg=0.773, PAR (proposed)=0.765, GRU (beam+telemetry seq.)=0.766
+h=5 random fold 2 (58 s): Persistence=0.546, GPS-KNN=0.725, GPS=0.808, GPS+hist=0.821, Vision(emb)=0.627, Fusion(emb+GPS)=0.777, Fusion+hist=0.815, PAR-noImg=0.773, PAR (proposed)=0.767, GRU (beam+telemetry seq.)=0.786
+h=5 random fold 3 (57 s): Persistence=0.541, GPS-KNN=0.716, GPS=0.799, GPS+hist=0.811, Vision(emb)=0.613, Fusion(emb+GPS)=0.759, Fusion+hist=0.799, PAR-noImg=0.760, PAR (proposed)=0.764, GRU (beam+telemetry seq.)=0.763
+h=5 random fold 4 (57 s): Persistence=0.535, GPS-KNN=0.702, GPS=0.787, GPS+hist=0.810, Vision(emb)=0.626, Fusion(emb+GPS)=0.764, Fusion+hist=0.795, PAR-noImg=0.756, PAR (proposed)=0.762, GRU (beam+telemetry seq.)=0.757
+   sanity h=5 flight GPS: train top1 0.998
+   sanity h=5 flight PAR (proposed): train top1 0.993
+h=5 flight fold 0 (157 s): Persistence=0.781, GPS-KNN=0.280, GPS=0.552, GPS+hist=0.693, Vision(emb)=0.228, Fusion(emb+GPS)=0.565, Fusion+hist=0.684, PAR-noImg=0.793, PAR (proposed)=0.803, Abl: PAR features, absolute target=0.657, Abl: history-only residual=0.742, Abl: PAR without telemetry=0.785, Abl: PAR non-causal cues (v4)=0.797, GRU (beam+telemetry seq.)=0.716, ResNet-18 (fine-tuned)=0.619, ResNet-18 + history (residual)=0.730
+h=5 flight fold 1 (149 s): Persistence=0.587, GPS-KNN=0.442, GPS=0.502, GPS+hist=0.573, Vision(emb)=0.199, Fusion(emb+GPS)=0.465, Fusion+hist=0.629, PAR-noImg=0.700, PAR (proposed)=0.700, Abl: PAR features, absolute target=0.563, Abl: history-only residual=0.618, Abl: PAR without telemetry=0.654, Abl: PAR non-causal cues (v4)=0.711, GRU (beam+telemetry seq.)=0.656, ResNet-18 (fine-tuned)=0.222, ResNet-18 + history (residual)=0.606
+h=5 flight fold 2 (150 s): Persistence=0.414, GPS-KNN=0.353, GPS=0.401, GPS+hist=0.507, Vision(emb)=0.147, Fusion(emb+GPS)=0.406, Fusion+hist=0.480, PAR-noImg=0.597, PAR (proposed)=0.602, Abl: PAR features, absolute target=0.498, Abl: history-only residual=0.431, Abl: PAR without telemetry=0.531, Abl: PAR non-causal cues (v4)=0.608, GRU (beam+telemetry seq.)=0.550, ResNet-18 (fine-tuned)=0.246, ResNet-18 + history (residual)=0.403
+h=5 flight fold 3 (147 s): Persistence=0.485, GPS-KNN=0.279, GPS=0.435, GPS+hist=0.492, Vision(emb)=0.258, Fusion(emb+GPS)=0.378, Fusion+hist=0.473, PAR-noImg=0.632, PAR (proposed)=0.651, Abl: PAR features, absolute target=0.506, Abl: history-only residual=0.510, Abl: PAR without telemetry=0.594, Abl: PAR non-causal cues (v4)=0.650, GRU (beam+telemetry seq.)=0.550, ResNet-18 (fine-tuned)=0.370, ResNet-18 + history (residual)=0.470
+h=5 flight fold 4 (149 s): Persistence=0.423, GPS-KNN=0.392, GPS=0.418, GPS+hist=0.488, Vision(emb)=0.234, Fusion(emb+GPS)=0.349, Fusion+hist=0.465, PAR-noImg=0.586, PAR (proposed)=0.584, Abl: PAR features, absolute target=0.496, Abl: history-only residual=0.436, Abl: PAR without telemetry=0.543, Abl: PAR non-causal cues (v4)=0.602, GRU (beam+telemetry seq.)=0.485, ResNet-18 (fine-tuned)=0.294, ResNet-18 + history (residual)=0.480
+
+main experiment finished at 6233 s
+
+                                                top1          top3          top5         pl_db        pl95_db       
+                                                mean    std   mean    std   mean    std   mean    std    mean    std
+h protocol model                                                                                                    
+0 flight   Abl: PAR features, absolute target  0.818  0.017  0.973  0.007  0.987  0.003  0.116  0.063   0.377  0.098
+           Abl: PAR non-causal cues (v4)       0.858  0.032  0.987  0.007  0.992  0.004  0.035  0.013   0.161  0.068
+           Abl: PAR without telemetry          0.858  0.033  0.985  0.007  0.991  0.005  0.037  0.013   0.157  0.065
+           Abl: history-only residual          0.819  0.046  0.980  0.008  0.991  0.005  0.078  0.032   0.332  0.150
+           Fusion(emb+GPS)                     0.574  0.072  0.904  0.035  0.955  0.025  0.565  0.337   3.417  2.184
+           Fusion+hist                         0.794  0.035  0.970  0.014  0.986  0.009  0.111  0.061   0.500  0.218
+           GPS                                 0.494  0.110  0.881  0.039  0.949  0.024  0.735  0.396   4.068  2.238
+           GPS+hist                            0.769  0.043  0.971  0.011  0.989  0.005  0.156  0.107   1.144  1.016
+           GPS-KNN                             0.417  0.061  0.770  0.075  0.814  0.069  0.916  0.182   4.684  1.956
+           GRU (beam+telemetry seq.)           0.813  0.044  0.980  0.008  0.992  0.004  0.076  0.027   0.349  0.119
+           PAR (proposed)                      0.852  0.033  0.986  0.007  0.992  0.005  0.039  0.015   0.183  0.075
+           PAR-noImg                           0.835  0.042  0.986  0.007  0.991  0.005  0.050  0.017   0.235  0.097
+           Persistence                         0.823  0.045  0.977  0.011  0.991  0.005  0.061  0.023   0.310  0.147
+           ResNet-18 (fine-tuned)              0.832  0.024  0.985  0.004  0.994  0.003  0.086  0.049   0.266  0.032
+           ResNet-18 + augmentation            0.832  0.020  0.991  0.008  0.996  0.003  0.043  0.008   0.234  0.059
+           ResNet-18 + history (residual)      0.838  0.038  0.985  0.007  0.991  0.005  0.054  0.020   0.235  0.091
+           Vision(emb)                         0.391  0.028  0.756  0.048  0.871  0.049  1.387  0.303   7.082  1.822
+  random   Fusion(emb+GPS)                     0.816  0.011  0.980  0.004  0.991  0.003  0.085  0.012   0.397  0.054
+           Fusion+hist                         0.835  0.011  0.986  0.003  0.994  0.002  0.048  0.008   0.233  0.037
+           GPS                                 0.810  0.009  0.969  0.005  0.988  0.001  0.121  0.016   0.498  0.083
+           GPS+hist                            0.829  0.010  0.985  0.002  0.993  0.002  0.053  0.005   0.251  0.030
+           GPS-KNN                             0.755  0.008  0.956  0.007  0.972  0.004  0.236  0.018   1.292  0.112
+           GRU (beam+telemetry seq.)           0.839  0.012  0.985  0.001  0.993  0.001  0.052  0.006   0.225  0.038
+           PAR (proposed)                      0.842  0.007  0.985  0.003  0.991  0.002  0.042  0.005   0.196  0.031
+           PAR-noImg                           0.827  0.008  0.985  0.002  0.991  0.002  0.051  0.004   0.256  0.023
+           Persistence                         0.823  0.008  0.977  0.002  0.991  0.001  0.061  0.004   0.307  0.022
+           ResNet-18 (fine-tuned)              0.856  0.006  0.993  0.001  0.997  0.001  0.027  0.002   0.163  0.015
+           Vision(emb)                         0.751  0.016  0.956  0.009  0.981  0.005  0.201  0.024   0.984  0.046
+1 flight   Abl: PAR features, absolute target  0.733  0.024  0.953  0.018  0.976  0.013  0.246  0.144   1.341  0.918
+           Abl: PAR non-causal cues (v4)       0.816  0.049  0.982  0.008  0.989  0.005  0.072  0.028   0.327  0.153
+           Abl: PAR without telemetry          0.802  0.041  0.976  0.009  0.988  0.006  0.083  0.027   0.406  0.163
+           Abl: history-only residual          0.745  0.059  0.964  0.013  0.988  0.006  0.188  0.084   0.959  0.557
+           Fusion(emb+GPS)                     0.587  0.094  0.923  0.032  0.963  0.020  0.532  0.413   3.227  2.722
+           Fusion+hist                         0.729  0.061  0.945  0.025  0.976  0.012  0.221  0.137   1.169  0.783
+           GPS                                 0.536  0.114  0.905  0.030  0.961  0.019  0.580  0.345   3.172  1.923
+           GPS+hist                            0.709  0.063  0.953  0.019  0.980  0.012  0.262  0.148   1.530  0.982
+           GPS-KNN                             0.458  0.055  0.798  0.075  0.831  0.072  0.743  0.180   4.067  2.243
+           GRU (beam+telemetry seq.)           0.739  0.062  0.956  0.016  0.983  0.008  0.196  0.085   0.924  0.474
+           PAR (proposed)                      0.804  0.055  0.981  0.008  0.989  0.005  0.082  0.033   0.383  0.192
+           PAR-noImg                           0.793  0.054  0.980  0.009  0.989  0.006  0.091  0.035   0.438  0.202
+           Persistence                         0.738  0.079  0.943  0.024  0.986  0.007  0.187  0.074   0.968  0.510
+           ResNet-18 (fine-tuned)              0.671  0.042  0.954  0.019  0.985  0.006  0.288  0.063   1.331  0.163
+           ResNet-18 + history (residual)      0.769  0.056  0.972  0.006  0.989  0.007  0.143  0.040   0.707  0.299
+           Vision(emb)                         0.356  0.020  0.728  0.049  0.867  0.046  1.467  0.270   7.120  2.103
+  random   Fusion(emb+GPS)                     0.826  0.004  0.979  0.003  0.990  0.003  0.078  0.012   0.332  0.029
+           Fusion+hist                         0.834  0.007  0.980  0.002  0.991  0.002  0.068  0.011   0.283  0.022
+           GPS                                 0.828  0.005  0.979  0.004  0.991  0.003  0.071  0.007   0.294  0.024
+           GPS+hist                            0.835  0.005  0.980  0.002  0.991  0.002  0.068  0.008   0.281  0.009
+           GPS-KNN                             0.792  0.008  0.971  0.003  0.978  0.002  0.124  0.011   0.630  0.117
+           GRU (beam+telemetry seq.)           0.817  0.010  0.980  0.003  0.990  0.000  0.087  0.011   0.337  0.042
+           PAR (proposed)                      0.817  0.010  0.982  0.003  0.990  0.002  0.068  0.011   0.308  0.030
+           PAR-noImg                           0.810  0.010  0.980  0.003  0.990  0.002  0.074  0.011   0.343  0.030
+           Persistence                         0.738  0.001  0.944  0.005  0.986  0.002  0.187  0.005   1.020  0.040
+           Vision(emb)                         0.714  0.009  0.936  0.005  0.974  0.002  0.290  0.027   1.513  0.180
+3 flight   Abl: PAR features, absolute target  0.616  0.061  0.913  0.026  0.962  0.021  0.498  0.221   2.588  1.042
+           Abl: PAR non-causal cues (v4)       0.743  0.062  0.963  0.018  0.984  0.009  0.174  0.068   0.830  0.369
+           Abl: PAR without telemetry          0.710  0.077  0.942  0.016  0.978  0.010  0.254  0.104   1.249  0.600
+           Abl: history-only residual          0.633  0.100  0.914  0.022  0.972  0.010  0.470  0.183   2.515  1.200
+           Fusion(emb+GPS)                     0.521  0.086  0.879  0.042  0.940  0.034  0.669  0.435   3.312  2.342
+           Fusion+hist                         0.611  0.092  0.901  0.029  0.949  0.017  0.497  0.256   2.616  1.339
+           GPS                                 0.521  0.063  0.888  0.033  0.945  0.023  0.680  0.340   3.621  2.063
+           GPS+hist                            0.602  0.076  0.908  0.017  0.959  0.019  0.500  0.188   2.469  0.922
+           GPS-KNN                             0.457  0.061  0.779  0.078  0.823  0.082  0.780  0.168   4.193  2.189
+           GRU (beam+telemetry seq.)           0.653  0.072  0.912  0.030  0.962  0.018  0.448  0.161   2.491  1.285
+           PAR (proposed)                      0.731  0.070  0.962  0.016  0.983  0.010  0.181  0.071   0.864  0.386
+           PAR-noImg                           0.724  0.068  0.963  0.017  0.982  0.010  0.190  0.071   0.935  0.358
+           Persistence                         0.615  0.129  0.859  0.060  0.953  0.021  0.593  0.274   3.280  1.658
+           ResNet-18 (fine-tuned)              0.472  0.108  0.822  0.076  0.918  0.054  1.045  0.439   6.237  2.511
+           ResNet-18 + augmentation            0.538  0.125  0.867  0.054  0.953  0.022  0.769  0.305   4.336  1.676
+           ResNet-18 + history (residual)      0.651  0.099  0.939  0.020  0.979  0.011  0.335  0.130   1.761  0.764
+           Vision(emb)                         0.260  0.020  0.642  0.076  0.825  0.066  1.935  0.249   8.006  1.548
+  random   Fusion(emb+GPS)                     0.802  0.005  0.964  0.003  0.984  0.002  0.136  0.011   0.567  0.055
+           Fusion+hist                         0.821  0.008  0.968  0.005  0.987  0.002  0.106  0.014   0.392  0.035
+           GPS                                 0.816  0.009  0.972  0.003  0.988  0.001  0.097  0.015   0.377  0.039
+           GPS+hist                            0.822  0.008  0.971  0.003  0.988  0.002  0.095  0.015   0.371  0.021
+           GPS-KNN                             0.785  0.013  0.965  0.005  0.974  0.004  0.160  0.014   0.756  0.089
+           GRU (beam+telemetry seq.)           0.791  0.006  0.968  0.005  0.987  0.002  0.150  0.002   0.558  0.062
+           PAR (proposed)                      0.783  0.011  0.972  0.004  0.987  0.002  0.117  0.010   0.493  0.046
+           PAR-noImg                           0.783  0.007  0.971  0.002  0.987  0.003  0.117  0.010   0.482  0.042
+           Persistence                         0.615  0.012  0.859  0.010  0.953  0.005  0.593  0.038   3.698  0.278
+           ResNet-18 (fine-tuned)              0.671  0.022  0.917  0.005  0.968  0.004  0.502  0.053   3.249  0.373
+           Vision(emb)                         0.659  0.010  0.895  0.006  0.950  0.003  0.582  0.054   3.922  0.526
+5 flight   Abl: PAR features, absolute target  0.544  0.069  0.864  0.036  0.929  0.026  0.778  0.241   4.612  1.508
+           Abl: PAR non-causal cues (v4)       0.674  0.082  0.940  0.027  0.969  0.017  0.318  0.137   1.595  0.756
+           Abl: PAR without telemetry          0.621  0.103  0.896  0.036  0.956  0.021  0.497  0.196   2.706  1.256
+           Abl: history-only residual          0.547  0.132  0.846  0.048  0.940  0.024  0.819  0.347   4.674  2.004
+           Fusion(emb+GPS)                     0.433  0.086  0.817  0.043  0.904  0.035  1.107  0.397   6.081  1.730
+           Fusion+hist                         0.546  0.103  0.852  0.036  0.921  0.027  0.802  0.304   4.812  1.621
+           GPS                                 0.461  0.063  0.836  0.051  0.913  0.027  0.990  0.352   5.310  2.203
+           GPS+hist                            0.551  0.087  0.865  0.034  0.931  0.021  0.761  0.257   4.236  1.600
+           GPS-KNN                             0.349  0.071  0.681  0.091  0.758  0.069  1.265  0.223   6.479  1.304
+           GRU (beam+telemetry seq.)           0.592  0.093  0.865  0.044  0.938  0.025  0.702  0.286   4.390  1.935
+           PAR (proposed)                      0.668  0.088  0.940  0.027  0.971  0.015  0.327  0.150   1.647  0.820
+           PAR-noImg                           0.662  0.086  0.937  0.028  0.972  0.017  0.335  0.145   1.761  0.765
+           Persistence                         0.538  0.152  0.775  0.099  0.908  0.048  0.979  0.482   5.492  2.663
+           ResNet-18 (fine-tuned)              0.350  0.160  0.660  0.103  0.821  0.064  1.947  0.622   8.525  1.368
+           ResNet-18 + history (residual)      0.538  0.130  0.854  0.062  0.948  0.024  0.752  0.332   4.330  1.961
+           Vision(emb)                         0.213  0.043  0.565  0.127  0.751  0.097  2.377  0.336   8.647  1.674
+  random   Fusion(emb+GPS)                     0.768  0.014  0.943  0.005  0.972  0.003  0.253  0.014   1.220  0.092
+           Fusion+hist                         0.803  0.012  0.955  0.003  0.978  0.001  0.154  0.008   0.605  0.039
+           GPS                                 0.796  0.010  0.954  0.002  0.976  0.003  0.190  0.008   0.786  0.085
+           GPS+hist                            0.812  0.006  0.959  0.003  0.981  0.002  0.133  0.014   0.491  0.093
+           GPS-KNN                             0.712  0.011  0.925  0.005  0.955  0.003  0.433  0.023   2.671  0.169
+           GRU (beam+telemetry seq.)           0.768  0.011  0.960  0.003  0.984  0.001  0.202  0.009   0.905  0.095
+           PAR (proposed)                      0.763  0.002  0.960  0.003  0.981  0.002  0.168  0.016   0.819  0.090
+           PAR-noImg                           0.764  0.009  0.960  0.003  0.981  0.002  0.169  0.015   0.773  0.054
+           Persistence                         0.538  0.006  0.775  0.009  0.908  0.006  0.979  0.032   6.231  0.356
+           Vision(emb)                         0.619  0.012  0.859  0.007  0.924  0.007  0.805  0.017   5.772  0.254
+
+Top-1, random vs flight-disjoint (leakage gap in pp):
+protocol                              flight  random  leak_gap_pp
+h model                                                          
+0 Abl: PAR features, absolute target   0.818     NaN          NaN
+  Abl: PAR non-causal cues (v4)        0.858     NaN          NaN
+  Abl: PAR without telemetry           0.858     NaN          NaN
+  Abl: history-only residual           0.819     NaN          NaN
+  Fusion(emb+GPS)                      0.574   0.816       24.214
+  Fusion+hist                          0.794   0.835        4.144
+  GPS                                  0.494   0.810       31.510
+  GPS+hist                             0.769   0.829        5.978
+  GPS-KNN                              0.417   0.755       33.771
+  GRU (beam+telemetry seq.)            0.813   0.839        2.584
+  PAR (proposed)                       0.852   0.842       -0.994
+  PAR-noImg                            0.835   0.827       -0.877
+  Persistence                          0.823   0.823        0.004
+  ResNet-18 (fine-tuned)               0.832   0.856        2.429
+  ResNet-18 + augmentation             0.832     NaN          NaN
+  ResNet-18 + history (residual)       0.838     NaN          NaN
+  Vision(emb)                          0.391   0.751       35.922
+1 Abl: PAR features, absolute target   0.733     NaN          NaN
+  Abl: PAR non-causal cues (v4)        0.816     NaN          NaN
+  Abl: PAR without telemetry           0.802     NaN          NaN
+  Abl: history-only residual           0.745     NaN          NaN
+  Fusion(emb+GPS)                      0.587   0.826       23.880
+  Fusion+hist                          0.729   0.834       10.516
+  GPS                                  0.536   0.828       29.179
+  GPS+hist                             0.709   0.835       12.600
+  GPS-KNN                              0.458   0.792       33.457
+  GRU (beam+telemetry seq.)            0.739   0.817        7.762
+  PAR (proposed)                       0.804   0.817        1.366
+  PAR-noImg                            0.793   0.810        1.690
+  Persistence                          0.738   0.738        0.008
+  ResNet-18 (fine-tuned)               0.671     NaN          NaN
+  ResNet-18 + history (residual)       0.769     NaN          NaN
+  Vision(emb)                          0.356   0.714       35.860
+3 Abl: PAR features, absolute target   0.616     NaN          NaN
+  Abl: PAR non-causal cues (v4)        0.743     NaN          NaN
+  Abl: PAR without telemetry           0.710     NaN          NaN
+  Abl: history-only residual           0.633     NaN          NaN
+  Fusion(emb+GPS)                      0.521   0.802       28.188
+  Fusion+hist                          0.611   0.821       20.993
+  GPS                                  0.521   0.816       29.542
+  GPS+hist                             0.602   0.822       21.965
+  GPS-KNN                              0.457   0.785       32.740
+  GRU (beam+telemetry seq.)            0.653   0.791       13.830
+  PAR (proposed)                       0.731   0.783        5.217
+  PAR-noImg                            0.724   0.783        5.860
+  Persistence                          0.615   0.615        0.014
+  ResNet-18 (fine-tuned)               0.472   0.671       19.905
+  ResNet-18 + augmentation             0.538     NaN          NaN
+  ResNet-18 + history (residual)       0.651     NaN          NaN
+  Vision(emb)                          0.260   0.659       39.896
+5 Abl: PAR features, absolute target   0.544     NaN          NaN
+  Abl: PAR non-causal cues (v4)        0.674     NaN          NaN
+  Abl: PAR without telemetry           0.621     NaN          NaN
+  Abl: history-only residual           0.547     NaN          NaN
+  Fusion(emb+GPS)                      0.433   0.768       33.511
+  Fusion+hist                          0.546   0.803       25.699
+  GPS                                  0.461   0.796       33.422
+  GPS+hist                             0.551   0.812       26.151
+  GPS-KNN                              0.349   0.712       36.325
+  GRU (beam+telemetry seq.)            0.592   0.768       17.656
+  PAR (proposed)                       0.668   0.763        9.549
+  PAR-noImg                            0.662   0.764       10.205
+  Persistence                          0.538   0.538        0.006
+  ResNet-18 (fine-tuned)               0.350     NaN          NaN
+  ResNet-18 + history (residual)       0.538     NaN          NaN
+  Vision(emb)                          0.213   0.619       40.599
+
+PAR vs others, per-flight top-1, flight-disjoint (Holm over all rows):
+    h                                  vs  mean_diff_pp  wins  losses  n_flights       p  p_holm
+0   0                         Persistence        3.4195    24       3         30  0.0002  0.0037
+1   0                             GPS-KNN       41.1400    29       1         30  0.0000  0.0000
+2   0                                 GPS       33.8228    28       1         30  0.0000  0.0002
+3   0                            GPS+hist        7.2536    26       4         30  0.0004  0.0072
+4   0                         Vision(emb)       43.4573    29       1         30  0.0000  0.0000
+5   0                     Fusion(emb+GPS)       28.3178    28       2         30  0.0000  0.0000
+6   0                         Fusion+hist        6.6891    26       4         30  0.0003  0.0059
+7   0                           PAR-noImg        2.6146    23       4         30  0.0010  0.0169
+8   0  Abl: PAR features, absolute target        1.5892    17      11         30  0.1109  0.9209
+9   0          Abl: history-only residual        3.2298    23       4         30  0.0003  0.0057
+10  0          Abl: PAR without telemetry        0.4761    11      14         30  0.8824  1.0000
+11  0       Abl: PAR non-causal cues (v4)       -0.4185     9      15         30  0.0593  0.6527
+12  0           GRU (beam+telemetry seq.)        6.4238    23       3         30  0.0005  0.0086
+13  0              ResNet-18 (fine-tuned)        3.3590    15      11         30  0.1373  0.9614
+14  0            ResNet-18 + augmentation        2.9240    15      12         30  0.5165  1.0000
+15  0      ResNet-18 + history (residual)        0.9771    22       5         30  0.0255  0.3565
+16  1                         Persistence        7.6820    26       1         30  0.0000  0.0004
+17  1                             GPS-KNN       30.3817    29       1         30  0.0000  0.0000
+18  1                                 GPS       24.0282    27       1         30  0.0000  0.0002
+19  1                            GPS+hist        8.4906    24       6         30  0.0001  0.0028
+20  1                         Vision(emb)       43.0298    30       0         30  0.0000  0.0000
+21  1                     Fusion(emb+GPS)       21.7898    29       1         30  0.0000  0.0000
+22  1                         Fusion+hist       10.2257    25       4         30  0.0000  0.0004
+23  1                           PAR-noImg        0.5751    17      10         30  0.1023  0.9209
+24  1  Abl: PAR features, absolute target        5.3336    18       9         30  0.0255  0.3565
+25  1          Abl: history-only residual        5.6270    25       2         30  0.0000  0.0013
+26  1          Abl: PAR without telemetry        0.3954    13      11         30  0.5677  1.0000
+27  1       Abl: PAR non-causal cues (v4)       -0.9380     7      20         30  0.0366  0.4392
+28  1           GRU (beam+telemetry seq.)       10.5527    26       4         30  0.0000  0.0002
+29  1              ResNet-18 (fine-tuned)       17.0187    29       1         30  0.0000  0.0000
+30  1      ResNet-18 + history (residual)        4.0483    21       5         30  0.0016  0.0251
+31  3                         Persistence       12.1105    26       3         30  0.0000  0.0002
+32  3                             GPS-KNN       24.8699    26       2         30  0.0000  0.0005
+33  3                                 GPS       20.0460    27       2         30  0.0000  0.0003
+34  3                            GPS+hist       14.3391    26       3         30  0.0000  0.0005
+35  3                         Vision(emb)       43.6553    30       0         30  0.0000  0.0000
+36  3                     Fusion(emb+GPS)       21.5567    28       2         30  0.0000  0.0000
+37  3                         Fusion+hist       12.7861    25       4         30  0.0001  0.0018
+38  3                           PAR-noImg        0.6299    15      11         30  0.3949  1.0000
+39  3  Abl: PAR features, absolute target       13.9678    24       5         30  0.0000  0.0011
+40  3          Abl: history-only residual       11.0966    29       1         30  0.0000  0.0000
+41  3          Abl: PAR without telemetry        4.4728    22       6         30  0.0033  0.0496
+42  3       Abl: PAR non-causal cues (v4)       -1.0356     8      20         30  0.0920  0.9197
+43  3           GRU (beam+telemetry seq.)       13.7440    28       2         30  0.0000  0.0000
+44  3              ResNet-18 (fine-tuned)       28.0241    29       1         30  0.0000  0.0000
+45  3            ResNet-18 + augmentation       22.9508    27       3         30  0.0000  0.0000
+46  3      ResNet-18 + history (residual)       11.6783    27       2         30  0.0000  0.0003
+47  5                         Persistence       13.6932    27       1         30  0.0000  0.0002
+48  5                             GPS-KNN       29.4644    28       0         30  0.0000  0.0002
+49  5                                 GPS       22.5955    28       0         30  0.0000  0.0002
+50  5                            GPS+hist       11.4071    25       2         30  0.0000  0.0004
+51  5                         Vision(emb)       41.6633    29       0         30  0.0000  0.0001
+52  5                     Fusion(emb+GPS)       26.0885    29       0         30  0.0000  0.0001
+53  5                         Fusion+hist       15.6257    28       1         30  0.0000  0.0001
+54  5                           PAR-noImg        0.2347    17       9         30  0.5677  1.0000
+55  5  Abl: PAR features, absolute target       14.4299    29       0         30  0.0000  0.0001
+56  5          Abl: history-only residual       14.4643    28       1         30  0.0000  0.0006
+57  5          Abl: PAR without telemetry        4.5029    21       5         30  0.0003  0.0059
+58  5       Abl: PAR non-causal cues (v4)        0.8058    12      14         30  0.6385  1.0000
+59  5           GRU (beam+telemetry seq.)       11.3512    24       4         30  0.0000  0.0008
+60  5              ResNet-18 (fine-tuned)       33.6116    29       0         30  0.0000  0.0001
+61  5      ResNet-18 + history (residual)       17.1325    29       0         30  0.0000  0.0001
+
+Sensitivity: only flights with >= 20 test samples:
+    h                         vs  mean_diff_pp  wins  losses  n_flights       p  p_holm
+0   0                Persistence        2.9154    22       2         26  0.0001  0.0016
+7   0                  PAR-noImg        2.0174    21       3         26  0.0005  0.0079
+12  0  GRU (beam+telemetry seq.)        4.1425    21       2         26  0.0002  0.0039
+13  0     ResNet-18 (fine-tuned)        3.2486    14       9         26  0.0727  0.7627
+16  1                Persistence        6.5759    24       1         26  0.0000  0.0009
+23  1                  PAR-noImg        0.5815    16       9         26  0.0693  0.7627
+28  1  GRU (beam+telemetry seq.)        7.4424    23       3         26  0.0000  0.0003
+29  1     ResNet-18 (fine-tuned)       14.1012    25       1         26  0.0000  0.0000
+31  3                Persistence       11.7430    23       3         26  0.0000  0.0000
+38  3                  PAR-noImg        0.2125    13      10         26  0.5034  1.0000
+43  3  GRU (beam+telemetry seq.)       10.2438    24       2         26  0.0000  0.0000
+44  3     ResNet-18 (fine-tuned)       28.0707    25       1         26  0.0000  0.0000
+47  5                Persistence       13.9267    25       1         26  0.0000  0.0000
+54  5                  PAR-noImg        0.2708    16       8         26  0.4929  1.0000
+59  5  GRU (beam+telemetry seq.)        9.9506    22       4         26  0.0000  0.0003
+60  5     ResNet-18 (fine-tuned)       34.4869    26       0         26  0.0000  0.0000
+
+Pooled flight-disjoint top-1 with 95% cluster-bootstrap CI:
+    h                               model  top1_pooled  ci_lo  ci_hi
+0   0  Abl: PAR features, absolute target        0.818  0.799  0.837
+1   0       Abl: PAR non-causal cues (v4)        0.858  0.829  0.884
+2   0          Abl: PAR without telemetry        0.858  0.829  0.882
+3   0          Abl: history-only residual        0.819  0.781  0.853
+4   0                     Fusion(emb+GPS)        0.574  0.530  0.618
+5   0                         Fusion+hist        0.794  0.763  0.822
+6   0                                 GPS        0.494  0.435  0.565
+7   0                            GPS+hist        0.769  0.733  0.797
+8   0                             GPS-KNN        0.417  0.368  0.470
+9   0           GRU (beam+telemetry seq.)        0.814  0.774  0.845
+10  0                      PAR (proposed)        0.852  0.824  0.879
+11  0                           PAR-noImg        0.835  0.802  0.865
+12  0                         Persistence        0.823  0.784  0.859
+13  0              ResNet-18 (fine-tuned)        0.832  0.802  0.855
+14  0            ResNet-18 + augmentation        0.832  0.802  0.855
+15  0      ResNet-18 + history (residual)        0.839  0.806  0.867
+16  0                         Vision(emb)        0.391  0.343  0.432
+17  1  Abl: PAR features, absolute target        0.733  0.696  0.762
+18  1       Abl: PAR non-causal cues (v4)        0.816  0.775  0.854
+19  1          Abl: PAR without telemetry        0.803  0.767  0.838
+20  1          Abl: history-only residual        0.745  0.697  0.794
+21  1                     Fusion(emb+GPS)        0.587  0.533  0.638
+22  1                         Fusion+hist        0.729  0.681  0.768
+23  1                                 GPS        0.536  0.480  0.599
+24  1                            GPS+hist        0.710  0.661  0.755
+25  1                             GPS-KNN        0.458  0.404  0.513
+26  1           GRU (beam+telemetry seq.)        0.739  0.687  0.785
+27  1                      PAR (proposed)        0.804  0.764  0.844
+28  1                           PAR-noImg        0.793  0.749  0.832
+29  1                         Persistence        0.738  0.676  0.797
+30  1              ResNet-18 (fine-tuned)        0.671  0.618  0.711
+31  1      ResNet-18 + history (residual)        0.769  0.715  0.813
+32  1                         Vision(emb)        0.356  0.311  0.394
+33  3  Abl: PAR features, absolute target        0.616  0.564  0.660
+34  3       Abl: PAR non-causal cues (v4)        0.743  0.692  0.793
+35  3          Abl: PAR without telemetry        0.710  0.655  0.762
+36  3          Abl: history-only residual        0.633  0.559  0.701
+37  3                     Fusion(emb+GPS)        0.521  0.453  0.577
+38  3                         Fusion+hist        0.611  0.550  0.664
+39  3                                 GPS        0.521  0.474  0.568
+40  3                            GPS+hist        0.602  0.545  0.654
+41  3                             GPS-KNN        0.457  0.399  0.515
+42  3           GRU (beam+telemetry seq.)        0.653  0.580  0.714
+43  3                      PAR (proposed)        0.731  0.679  0.782
+44  3                           PAR-noImg        0.724  0.671  0.777
+45  3                         Persistence        0.615  0.517  0.701
+46  3              ResNet-18 (fine-tuned)        0.472  0.389  0.547
+47  3            ResNet-18 + augmentation        0.538  0.447  0.621
+48  3      ResNet-18 + history (residual)        0.651  0.569  0.723
+49  3                         Vision(emb)        0.260  0.228  0.289
+50  5  Abl: PAR features, absolute target        0.544  0.492  0.592
+51  5       Abl: PAR non-causal cues (v4)        0.674  0.611  0.737
+52  5          Abl: PAR without telemetry        0.621  0.552  0.691
+53  5          Abl: history-only residual        0.547  0.455  0.638
+54  5                     Fusion(emb+GPS)        0.433  0.367  0.492
+55  5                         Fusion+hist        0.546  0.483  0.607
+56  5                                 GPS        0.462  0.416  0.506
+57  5                            GPS+hist        0.551  0.488  0.605
+58  5                             GPS-KNN        0.349  0.304  0.395
+59  5           GRU (beam+telemetry seq.)        0.592  0.511  0.667
+60  5                      PAR (proposed)        0.668  0.604  0.731
+61  5                           PAR-noImg        0.662  0.594  0.728
+62  5                         Persistence        0.538  0.438  0.640
+63  5              ResNet-18 (fine-tuned)        0.350  0.250  0.450
+64  5      ResNet-18 + history (residual)        0.538  0.442  0.619
+65  5                         Vision(emb)        0.213  0.175  0.251
+
+Closed-loop tracking (h = 0, flight-disjoint, mean over folds):
+                               acc  pl_db  pl95_db  outage_3db  overhead
+k model                                                                 
+1 GPS+hist                   0.425  1.416    6.605       0.174     0.052
+  GRU (beam+telemetry seq.)  0.386  1.720    7.517       0.212     0.052
+  PAR (proposed)             0.306  1.637    6.878       0.201     0.052
+  PAR-noImg                  0.320  1.797    8.288       0.207     0.052
+  Persistence (local sweep)  0.134  4.359   11.391       0.565     0.052
+  ResNet-18 (fine-tuned)     0.832  0.086    0.267       0.007     0.052
+3 GPS+hist                   0.958  0.056    0.026       0.008     0.113
+  GRU (beam+telemetry seq.)  0.965  0.044    0.003       0.006     0.113
+  PAR (proposed)             0.962  0.099    0.659       0.018     0.113
+  PAR-noImg                  0.949  0.116    0.765       0.019     0.113
+  Persistence (local sweep)  0.802  0.678    3.277       0.123     0.113
+  ResNet-18 (fine-tuned)     0.985  0.016    0.000       0.003     0.113
+5 GPS+hist                   0.987  0.011    0.000       0.002     0.174
+  GRU (beam+telemetry seq.)  0.986  0.016    0.000       0.002     0.174
+  PAR (proposed)             0.989  0.019    0.000       0.003     0.174
+  PAR-noImg                  0.988  0.017    0.000       0.003     0.174
+  Persistence (local sweep)  0.949  0.151    1.119       0.023     0.174
+  ResNet-18 (fine-tuned)     0.994  0.011    0.000       0.002     0.174
+
+Closed-loop PAR vs others (per flight):
+   kk                         vs  mean_diff_pp  wins  losses  n_flights       p  p_holm
+0   1  Persistence (local sweep)       11.7280    22       4         30  0.0001  0.0003
+1   1                  PAR-noImg        0.9891    15      11         30  0.5506  0.6259
+2   1                   GPS+hist      -14.5018     5      23         30  0.0003  0.0010
+3   1  GRU (beam+telemetry seq.)       -2.6339    11      16         30  0.3129  0.6259
+4   1     ResNet-18 (fine-tuned)      -45.8801     2      28         30  0.0000  0.0000
+0   3  Persistence (local sweep)       12.6288    19       1         30  0.0006  0.0030
+1   3                  PAR-noImg        0.3838     7       5         30  0.8139  1.0000
+2   3                   GPS+hist       -0.3179    16       8         30  0.5111  1.0000
+3   3  GRU (beam+telemetry seq.)        1.6341    15      11         30  0.4849  1.0000
+4   3     ResNet-18 (fine-tuned)       -4.1207     6      16         30  0.0716  0.2863
+0   5  Persistence (local sweep)        6.9248    11       4         30  0.0231  0.1155
+1   5                  PAR-noImg       -0.1223     7       4         30  0.5937  1.0000
+2   5                   GPS+hist       -0.9728    11       8         30  0.4445  1.0000
+3   5  GRU (beam+telemetry seq.)        0.1297    13       9         30  0.5481  1.0000
+4   5     ResNet-18 (fine-tuned)       -1.9874     7      14         30  0.1924  0.7697
+
+Robustness (top-1, flight-disjoint, trained on clean images, 5 folds):
+                                   blur  frame-drop 30%  low-light  occlusion  clean
+h model                                                                             
+0 Fusion+hist                     0.772           0.791      0.728      0.772  0.794
+  PAR (proposed)                  0.841           0.843      0.831      0.825  0.852
+  PAR-noImg                       0.835           0.835      0.835      0.835  0.835
+  ResNet-18 (fine-tuned)          0.613           0.802      0.025      0.065  0.832
+  ResNet-18 + augmentation        0.781           0.800      0.642      0.480  0.832
+  ResNet-18 + history (residual)  0.831           0.829      0.779      0.697  0.838
+  Vision(emb)                     0.156           0.387      0.129      0.138  0.391
+3 Fusion+hist                     0.559           0.609      0.531      0.527  0.611
+  PAR (proposed)                  0.716           0.720      0.703      0.688  0.731
+  PAR-noImg                       0.724           0.724      0.724      0.724  0.724
+  ResNet-18 (fine-tuned)          0.364           0.462      0.047      0.059  0.472
+  ResNet-18 + augmentation        0.500           0.530      0.408      0.334  0.538
+  ResNet-18 + history (residual)  0.653           0.645      0.175      0.310  0.651
+  Vision(emb)                     0.136           0.258      0.137      0.175  0.260
+
+Cost:
+                                         model  params_or_nodes           unit     bytes  lat_cpu1_ms  lat_gpu_ms
+0                                      GPS-KNN            26700  stored values    213600        1.052         NaN
+1                                          GPS           192930     tree nodes  11150196        1.178         NaN
+2                                     GPS+hist           185252     tree nodes  10957612        1.091         NaN
+3                                  Vision(emb)           200428     tree nodes  11837734        1.144         NaN
+4                              Fusion(emb+GPS)           189636     tree nodes  11262507        1.106         NaN
+5                                  Fusion+hist           186132     tree nodes  11114465        1.368         NaN
+6                                    PAR-noImg            66788     tree nodes   4127847        0.891         NaN
+7                               PAR (proposed)            65570     tree nodes   4088670        0.908         NaN
+8           Abl: PAR features, absolute target           183088     tree nodes  10985380        1.119         NaN
+9                   Abl: history-only residual            74356     tree nodes   4522143        0.902         NaN
+10                  Abl: PAR without telemetry            68876     tree nodes   4293616        0.857         NaN
+11               Abl: PAR non-causal cues (v4)            65496     tree nodes   4086496        0.901         NaN
+12                      ResNet-18 (fine-tuned)         11192928     parameters  44851467       36.722       3.655
+13                    ResNet-18 + augmentation         11192928     parameters  44851467       37.979       3.006
+14              ResNet-18 + history (residual)         11323729     parameters  45375367       37.431       3.146
+15  image cues (causal background subtraction)                0              -         0       12.655         NaN

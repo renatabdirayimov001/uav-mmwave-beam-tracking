@@ -1,0 +1,11 @@
+model,size,unit,latency_ms,device
+GPS-KNN,26700,stored values,0.9746212299978652,cpu
+GPS,192930,tree nodes,1.226125379998848,cpu
+GPS+hist,185252,tree nodes,1.1859122499936348,cpu
+Vision(emb),200410,tree nodes,1.1931942200044432,cpu
+Fusion(emb+GPS),189988,tree nodes,1.216334820001066,cpu
+Fusion+hist,186154,tree nodes,1.2306323900065763,cpu
+PAR-noImg,66788,tree nodes,0.9538902999975107,cpu
+PAR (proposed),65496,tree nodes,1.0124875400015299,cpu
+ResNet-18 (fine-tuned),11192928,parameters,4.52503149000222,cuda
+ResNet-18 embedding (for Vision/Fusion GBT),11176512,parameters,,cuda
