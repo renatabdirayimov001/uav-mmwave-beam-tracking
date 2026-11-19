@@ -4,6 +4,8 @@
 
 Code and results for the paper *"Beyond Random Splits and Oracle Beam History: Leakage-Aware, Closed-Loop Evaluation of Camera-Aided Beam Tracking for Drone Millimeter-Wave Links"* (under review).
 
+**Author:** Renat Abdirayimov, Department of Infocommunication Engineering, Tashkent University of Information Technologies named after Muhammad al-Khwarizmi, Tashkent, Uzbekistan ([ORCID 0009-0005-3636-8864](https://orcid.org/0009-0005-3636-8864)).
+
 The experiments use the real 60 GHz drone measurements of **DeepSense 6G Scenario 23**. The dataset is **not** redistributed here; download it from the DeepSense 6G website (https://www.deepsense6g.net/scenario-23/) or use a Kaggle mirror of the development set.
 
 ## What is evaluated

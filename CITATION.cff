@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this code or these results, please cite them as below."
+title: "Code and results: Leakage-aware, closed-loop evaluation of camera-aided beam tracking for drone mmWave links"
+authors:
+  - family-names: Abdirayimov
+    given-names: Renat
+    orcid: "https://orcid.org/0009-0005-3636-8864"
+    affiliation: "Tashkent University of Information Technologies named after Muhammad al-Khwarizmi"
+doi: 10.5281/zenodo.24322380
+repository-code: "https://github.com/renatabdirayimov001/uav-mmwave-beam-tracking"
+license: MIT
+version: 1.0.0
+date-released: 2026-11-17
